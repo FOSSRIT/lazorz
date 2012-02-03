@@ -1,3 +1,7 @@
+// Portions of this code are from the book JavaScript: Making Isometric Social
+// Real-Time Games with HTML5, CSS3 and Javascript (ISBN #978-1-4493-0475-1).
+// Copyright 2011 by Mario Andres Pagella.
+
 window.onload = function () {
 	var tileMap = [];
 	
