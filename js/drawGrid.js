@@ -75,13 +75,16 @@ window.onload = function () {
 
                     switch(tileType){
                         case 0:
+                            //Mirror Tile
                             c.drawImage(this.tb1, tilePositionX, tilePositionY, this.tb1.width, this.tb1.height);
                             break;
                         case 1:
+                            //Orange Box (for now)
                             c.drawImage(this.tb2, tilePositionX, tilePositionY, this.tb2.width, this.tb2.height);
                             break;
                     }
                 } else {
+                    //Else just draw the strokes for each rectangle tile
                     c.strokeRect(tilePositionX, tilePositionY, tile.width, tile.height);
                 }
             }
@@ -94,7 +97,9 @@ window.onload = function () {
         c.fillRect (0, grid.height * tile.height, grid.width * tile.width, tile.height);
         c.strokeRect(0, grid.height * tile.height, grid.width * tile.width, tile.height);
 
+        //Draw the Mirror Tile in the tool box
         c.drawImage(this.tb1, 0, grid.height * tile.height, this.tb1.width, this.tb1.height);
+        //Draw the Orange Box (for now) in the tool box
         c.drawImage(this.tb2, this.tb1.width, grid.height * tile.height, this.tb2.width, this.tb2.height);
     }
 
