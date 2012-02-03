@@ -19,7 +19,17 @@ function main_loop() {
     var lookup = {
         0: nothing,
         1: ninety_degree_mirror,
-        // etc...
+        /*
+        1: block,
+        2: forty_five_degree_mirror,
+        3: ninety_degree_mirror,
+        4: one_thirty_five_degree_mirror,
+        5: one_eighty_degree_mirror,
+        6: two_twenty_five_degree_mirror,
+        7: two_seventy_degree_mirror,
+        8: three_fifteen_degree_mirror,
+        9: three_sixty_degree_mirror,
+        etc...*/
     }
 
     grid = [
