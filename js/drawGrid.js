@@ -3,8 +3,8 @@ window.onload = function () {
 	
 	// 50px square tiles
 	var tile = {
-		width: 50,
-		height: 50
+		width: 48,
+		height: 48
 	}
 	
 	// 10x10 of 50px tiles
