@@ -7,4 +7,4 @@ Now taking that overall gameplay, I think the most fitting idea (theme) would be
 Now to flip that completely and make the game a bit more of a competition rather than working together, you could have the players starting in the middle each with their own laser and have them fighting to see who can escape the temple the fastest by completing their temple rooms.  That could even be another story element to the previous idea.  Have them work together to reach the relic, that when removed causes a collapse or something to change where now it's somewhat of a race of who can get out the fastest.  Points could be awarded for having the relic when you finish, finish the fastest, using the least mirrors or objects to complete the puzzle etc.
 
 I definitely think the temple, ancient esque theme is the best route.  It carries that idea of exploration that all kids enjoy.
-===========================================
+-------------------------------------------------
