@@ -64,10 +64,12 @@ window.onload = function () {
                 
                 switch(tileType) {
                     case 0:
+                        c.fillRect(tilePositionX, tilePositionY, tile.width-1, tile.height-1);
                         c.drawImage(tb1, tilePositionX, tilePositionY, tb1.width, tb1.height);
                         break;
                     case 1:
-                        c.drawImage(tb2, tilePositionX, tilePositionY, tb2.width, tb2.height);
+                        c.fillRect(tilePositionX, tilePositionY, tile.width-1, tile.height-1);
+                        c.drawImage(tb2, tilePositionX, tilePositionY, tb2.width-1, tb2.height-1);
                         break;
 					case 2:
 						c.drawImage(start, tilePositionX, tilePositionY, start.width, start.height);
