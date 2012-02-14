@@ -30,7 +30,7 @@ window.onload = function () {
     this.tb1 = new Image();
     this.tb2 = new Image();
     this.tb1.src = "image/mirror45.png";
-    this.tb2.src = "image/orange.png";
+    this.tb2.src = "image/no-really-block.png";
 
     //For determining which tile was selected from the toolbox
     tileType = null;
@@ -56,10 +56,12 @@ window.onload = function () {
                 
                 switch(tileType) {
                     case 0:
+                        c.fillRect(tilePositionX, tilePositionY, tile.width-1, tile.height-1);
                         c.drawImage(tb1, tilePositionX, tilePositionY, tb1.width, tb1.height);
                         break;
                     case 1:
-                        c.drawImage(tb2, tilePositionX, tilePositionY, tb2.width, tb2.height);
+                        c.fillRect(tilePositionX, tilePositionY, tile.width-1, tile.height-1);
+                        c.drawImage(tb2, tilePositionX, tilePositionY, tb2.width-1, tb2.height-1);
                         break;
                 }
             }
