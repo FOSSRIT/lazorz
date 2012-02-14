@@ -14,7 +14,7 @@
    id="svg3419"
    version="1.1"
    inkscape:version="0.48.1 r9760"
-   sodipodi:docname="lazorl45.png">
+   sodipodi:docname="beam45.svg">
   <defs
      id="defs3421" />
   <sodipodi:namedview
@@ -24,9 +24,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="256"
-     inkscape:cx="21.485516"
-     inkscape:cy="45.169476"
+     inkscape:zoom="32"
+     inkscape:cx="9.6723899"
+     inkscape:cy="24.961434"
      inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:grid-bbox="true"
@@ -156,6 +156,14 @@
        orientation="1,0"
        position="27,48.71875"
        id="guide5195" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="7.9107571,25.997223"
+       id="guide3500" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="-5.6237086,19.997864"
+       id="guide3537" />
   </sodipodi:namedview>
   <metadata
      id="metadata3424">
@@ -176,7 +184,7 @@
      transform="translate(0,-2)">
     <path
        style="fill:#ff0000;fill-opacity:1;stroke:none"
-       d="M 27,0 21,0 21,19 0,19 0,25 17.011479,25 27,14.726562 27,14.6875 27,14.46875 z"
+       d="m 27,0 -6,0 0,20.002777 -21,0 0,5.999359 15.73337,0 L 27,14.726562 27,14.6875 27,14.46875 z"
        id="path4653"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccccccccc"
