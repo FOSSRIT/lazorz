@@ -101,9 +101,9 @@ window.onload = function () {
         var startCol = 0;
         var rowCount = startRow + Math.floor(canvas.width / tile.width) + 1;
         var colCount = startCol + Math.floor(canvas.height / tile.height) + 1;
-		
-		//c.drawImage(this.start, 100, 100, this.start.width, this.start.height);
-		
+        
+        //c.drawImage(this.start, 100, 100, this.start.width, this.start.height);
+        
         rowCount = ((startRow + rowCount) > grid.width) ? grid.width : rowCount;
         colCount = ((startCol + colCount) > grid.height) ? grid.height : colCount;
 
