@@ -3,7 +3,8 @@
 // Copyright 2011 by Mario Andres Pagella.
 window.onload = function () {
     var tileMap = [];
-	this.busyTile = [];
+    this.busyTile = new Array(10);
+    this.tileIndex = new Array(10);
 
     // 50px square tiles
     var tile = {
@@ -72,16 +73,14 @@ window.onload = function () {
     //For determining which tile was selected from the toolbox
     tileType = null;
     
+    setupOccupiedArray();
     canvas.addEventListener('click', handleClick, false);
-
     drawGrid();
 
     function handleClick(e) {
         //When a click is detected, translate the mouse coordinates to pixel coordinates
         var row = Math.floor((e.clientX) / tile.width);
         var column = Math.floor((e.clientY) / tile.height);
-        
-		console.log(this.busyTile)
 		
         if(column < 10) {
             if (tileMap[row] == null) {
@@ -94,31 +93,37 @@ window.onload = function () {
                 var tilePositionY = tile.height * column;
 				
                 switch(tileType) {
-			case 0:
-                         c.fillRect(tilePositionX, tilePositionY, tile.width, tile.height-1);
-			    c.drawImage(mirrorList[curIndex], tilePositionX, tilePositionY, mirrorList[curIndex].width, mirrorList[curIndex].height);
-							
-				if(curIndex == 7)
-					curIndex = 0;
-				else 
-					curIndex++;
-			    break;
-			case 1:
+                    case 0:
+                        c.fillRect(tilePositionX, tilePositionY, tile.width, tile.height-1);
+                        
+                        if(curIndex == 7 || busyTile[row][column] == false) {
+                            curIndex = 0;
+                            c.drawImage(mirrorList[curIndex], tilePositionX, tilePositionY, mirrorList[curIndex].width, mirrorList[curIndex].height);
+                            busyTile[row][column] = true;
+                            tileIndex[row][column] = curIndex;
+                        }
+                        else {
+                            curIndex = tileIndex[row][column]+1;
+                            c.drawImage(mirrorList[curIndex], tilePositionX, tilePositionY, mirrorList[curIndex].width, mirrorList[curIndex].height);
+                            tileIndex[row][column] = curIndex;
+                        }
+                        break;
+                    case 1:
                          //c.fillRect(tilePositionX, tilePositionY, tile.width-1, tile.height-1);
                          c.drawImage(block, tilePositionX, tilePositionY, block.width-1, block.height-1);
                          break;
-			case 2:
-			    c.drawImage(start, tilePositionX, tilePositionY, start.width, start.height);
-			    break;
-			case 3:
-			    c.drawImage(lazer180, tilePositionX, tilePositionY, lazer180.width, lazer180.height);
-			    break;
-			case 4:
-			    c.drawImage(lazer45, tilePositionX, tilePositionY, lazer45.width, lazer45.height);
-			    break;
-			case 5:
-			    c.drawImage(lazer90, tilePositionX, tilePositionY, lazer90.width, lazer90.height);
-			    break;
+                    case 2:
+                        c.drawImage(start, tilePositionX, tilePositionY, start.width, start.height);
+                        break;
+                    case 3:
+                        c.drawImage(lazer180, tilePositionX, tilePositionY, lazer180.width, lazer180.height);
+                        break;
+                    case 4:
+                        c.drawImage(lazer45, tilePositionX, tilePositionY, lazer45.width, lazer45.height);
+                        break;
+                    case 5:
+                        c.drawImage(lazer90, tilePositionX, tilePositionY, lazer90.width, lazer90.height);
+                        break;
                 }
             }
         }
@@ -148,9 +153,6 @@ window.onload = function () {
                 var tilePositionX = tile.width * row;
                 var tilePositionY = tile.height * col;
 				
-		  this.busyTile[row] = [];
-		  this.busyTile[row][col] = false;
-				
                 //Else just draw the strokes for each rectangle tile
                 c.strokeRect(tilePositionX, tilePositionY, tile.width, tile.height);
             }
@@ -168,15 +170,31 @@ window.onload = function () {
         c.drawImage(this.mirror45, 0, grid.height * tile.height, this.mirror45.width, this.mirror45.height);
         //Draw the block in the tool box
         c.drawImage(this.block, this.mirror45.width, grid.height * tile.height, this.block.width, this.block.height);
-	 //Draw the Mirror Tile in the tool box
+        //Draw the Mirror Tile in the tool box
         c.drawImage(this.start, this.start.width * 2, grid.height * tile.height, this.start.width, this.start.height);
-	 //180 Lazer beam
-	 c.drawImage(this.lazer180, this.lazer180.width * 3, grid.height * tile.height, this.lazer180.width, this.lazer180.height);
-	 //45 beam
-	 c.drawImage(this.lazer45, this.lazer45.width * 4, grid.height * tile.height, this.lazer45.width, this.lazer45.height);
-	 //90 beam
-	 c.drawImage(this.lazer90, this.lazer90.width * 5, grid.height * tile.height, this.lazer90.width, this.lazer90.height);
+        //180 Lazer beam
+        c.drawImage(this.lazer180, this.lazer180.width * 3, grid.height * tile.height, this.lazer180.width, this.lazer180.height);
+        //45 beam
+        c.drawImage(this.lazer45, this.lazer45.width * 4, grid.height * tile.height, this.lazer45.width, this.lazer45.height);
+        //90 beam
+        c.drawImage(this.lazer90, this.lazer90.width * 5, grid.height * tile.height, this.lazer90.width, this.lazer90.height);
 
-	 c.fillStyle = '#FFFFFF';
+        c.fillStyle = '#FFFFFF';
+    }
+    
+    // Populates the 2d array with all falses because every space is empty at the start (for now)
+    function setupOccupiedArray() {
+        for (var row = 0; row < 10; row++) {
+            for (var col = 0; col < 10; col++) {
+                if(this.busyTile[row] == null)
+                    this.busyTile[row] = new Array(10);
+                    
+                if(this.tileIndex[row] == null)
+                    this.tileIndex[row] = new Array(10);
+                    
+                this.busyTile[row][col] = false;
+                this.tileIndex[row][col] = -1;
+            }
+        }
     }
 }
