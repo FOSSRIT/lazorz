@@ -1,7 +1,6 @@
 // Portions of this code are from the book JavaScript: Making Isometric Social
 // Real-Time Games with HTML5, CSS3 and Javascript (ISBN #978-1-4493-0475-1).
 // Copyright 2011 by Mario Andres Pagella.
-
 window.onload = function () {
     var tileMap = [];
 
@@ -26,7 +25,7 @@ window.onload = function () {
 
     var canvas = document.getElementById('myCanvas');
     var c = canvas.getContext('2d');
-
+    
     //Temp loading in image for toolbox placeholder
     this.tb1 = new Image();
     this.tb2 = new Image();
@@ -34,10 +33,9 @@ window.onload = function () {
     this.tb2.src = "image/orange.png";
 
     //For determining which tile was selected from the toolbox
-    tileType = 0;
-
+    tileType = null;
+    
     canvas.addEventListener('click', handleClick, false);
-    canvas.addEventListener('click', addSelected, false);
 
     drawGrid();
 
@@ -45,11 +43,30 @@ window.onload = function () {
         //When a click is detected, translate the mouse coordinates to pixel coordinates
         var row = Math.floor((e.clientX) / tile.width);
         var column = Math.floor((e.clientY) / tile.height);
-
-        if (tileMap[row] == null) {
-            tileMap[row] = [];
+        
+        if(column < 10) {
+            if (tileMap[row] == null) {
+                tileMap[row] = [];
+            }
+            tileMap[row][column] = 1;
+            
+            if(tileType != null) {
+                var tilePositionX = tile.width * row;
+                var tilePositionY = tile.height * column;
+                
+                switch(tileType) {
+                    case 0:
+                        c.drawImage(tb1, tilePositionX, tilePositionY, tb1.width, tb1.height);
+                        break;
+                    case 1:
+                        c.drawImage(tb2, tilePositionX, tilePositionY, tb2.width, tb2.height);
+                        break;
+                }
+            }
         }
-        tileMap[row][column] = 1;
+        else {
+            tileType = row;
+        }
     }
 
     function drawGrid() {
@@ -70,52 +87,23 @@ window.onload = function () {
             for (var col = startCol; col < colCount; col++) {
                 var tilePositionX = tile.width * row;
                 var tilePositionY = tile.height * col;
-
-                if (tileMap[row] != null && tileMap[row][col] != null) {
-
-                    switch(tileType){
-                        case 0:
-                            //Mirror Tile
-                            c.drawImage(this.tb1, tilePositionX, tilePositionY, this.tb1.width, this.tb1.height);
-                            break;
-                        case 1:
-                            //Orange Box (for now)
-                            c.drawImage(this.tb2, tilePositionX, tilePositionY, this.tb2.width, this.tb2.height);
-                            break;
-                    }
-                } else {
-                    //Else just draw the strokes for each rectangle tile
-                    c.strokeRect(tilePositionX, tilePositionY, tile.width, tile.height);
-                }
+                
+                //Else just draw the strokes for each rectangle tile
+                c.strokeRect(tilePositionX, tilePositionY, tile.width, tile.height);
             }
         }
-        setTimeout(drawGrid, 1);
+        
+        setTimeout(drawToolBox, 1);
     }
 
     function drawToolBox() {
         c.fillStyle = '#FFFFFF';
         c.fillRect (0, grid.height * tile.height, grid.width * tile.width, tile.height);
         c.strokeRect(0, grid.height * tile.height, grid.width * tile.width, tile.height);
-
+        
         //Draw the Mirror Tile in the tool box
         c.drawImage(this.tb1, 0, grid.height * tile.height, this.tb1.width, this.tb1.height);
         //Draw the Orange Box (for now) in the tool box
         c.drawImage(this.tb2, this.tb1.width, grid.height * tile.height, this.tb2.width, this.tb2.height);
-    }
-
-    function addSelected(e) {
-        var row = Math.floor(e.clientX / tile.width);
-        var column = Math.floor(e.clientY / tile.height);
-
-        if(column == 10) {
-            switch(row){
-                case 0:
-                    tileType = 0;
-                    break;
-                case 1:
-                    tileType = 1;
-                    break;
-            }
-        }
     }
 }
