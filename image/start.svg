@@ -14,7 +14,7 @@
    id="svg3209"
    version="1.1"
    inkscape:version="0.48.1 r9760"
-   sodipodi:docname="New document 12">
+   sodipodi:docname="beam180.svg">
   <defs
      id="defs3211" />
   <sodipodi:namedview
@@ -26,7 +26,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="8"
      inkscape:cx="10.764466"
-     inkscape:cy="35.695525"
+     inkscape:cy="31.729071"
      inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:grid-bbox="true"
@@ -147,68 +147,16 @@
      id="layer1"
      inkscape:label="Layer 1"
      inkscape:groupmode="layer">
-    <rect
+    <path
        style="color:#000000;fill:#333333;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       id="rect3221"
-       width="3"
-       height="48.125"
-       x="0"
-       y="1.2663227e-07" />
-    <rect
-       style="color:#000000;fill:#333333;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       id="rect3269"
-       width="3.2307692"
-       height="42"
-       x="3"
-       y="3" />
-    <rect
-       style="color:#000000;fill:#333333;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       id="rect3271"
-       width="3"
-       height="36"
-       x="6"
-       y="6" />
-    <rect
-       style="color:#000000;fill:#333333;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       id="rect3273"
-       width="3"
-       height="33"
-       x="9"
-       y="9" />
-    <rect
-       style="color:#000000;fill:#333333;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       id="rect3275"
-       width="3.375"
-       height="27"
-       x="12"
-       y="12" />
-    <rect
-       style="color:#000000;fill:#333333;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       id="rect3277"
-       width="3"
-       height="21"
-       x="15"
-       y="15" />
-    <rect
-       style="color:#000000;fill:#333333;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       id="rect3279"
-       width="3"
-       height="18"
-       x="18"
-       y="18" />
-    <rect
-       style="color:#000000;fill:#333333;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       id="rect3281"
-       width="3"
-       height="12"
-       x="21"
-       y="21" />
+       d="M 0 0 L 0 48.125 L 3 48.125 L 3 45 L 6.21875 45 L 6.21875 42 L 9 42 L 9 39 L 12 39 L 12 36 L 15 36 L 15 33 L 18 33 L 18 30 L 21 30 L 21 27 L 24 27 L 24 21 L 21 21 L 21 18 L 18 18 L 18 15 L 15 15 L 15 12 L 12 12 L 12 9 L 9 9 L 9 6 L 6.21875 6 L 6.21875 3 L 3 3 L 3 0 L 0 0 z "
+       id="rect3221" />
     <rect
        style="color:#000000;fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
        id="rect3283"
        width="24"
        height="6"
        x="24"
-       y="24" />
+       y="21" />
   </g>
 </svg>
