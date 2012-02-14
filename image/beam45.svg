@@ -9,12 +9,12 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="46"
-   height="46"
+   width="48"
+   height="48"
    id="svg3419"
    version="1.1"
    inkscape:version="0.48.1 r9760"
-   sodipodi:docname="beam45.svg">
+   sodipodi:docname="beam45.png">
   <defs
      id="defs3421" />
   <sodipodi:namedview
@@ -25,8 +25,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="32"
-     inkscape:cx="9.6723899"
-     inkscape:cy="24.961434"
+     inkscape:cx="14.867565"
+     inkscape:cy="23.231946"
      inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:grid-bbox="true"
@@ -146,7 +146,7 @@
        id="guide4649" />
     <sodipodi:guide
        orientation="0,1"
-       position="16.21875,46"
+       position="-8.662058,47.994873"
        id="guide5191" />
     <sodipodi:guide
        orientation="1,0"
@@ -164,6 +164,10 @@
        orientation="0,1"
        position="-5.6237086,19.997864"
        id="guide3537" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="16.71875,23"
+       id="guide3668" />
   </sodipodi:namedview>
   <metadata
      id="metadata3424">
@@ -180,11 +184,10 @@
   <g
      id="layer1"
      inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
-     transform="translate(0,-2)">
+     inkscape:groupmode="layer">
     <path
        style="fill:#ff0000;fill-opacity:1;stroke:none"
-       d="m 27,0 -6,0 0,20.002777 -21,0 0,5.999359 15.73337,0 L 27,14.726562 27,14.6875 27,14.46875 z"
+       d="m 27,-1.994873 -6,0 L 21,19 0,19 0,25 16.71875,25 27,14.726562 27,14.6875 27,14.46875 z"
        id="path4653"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccccccccc"
