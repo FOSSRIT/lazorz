@@ -78,6 +78,11 @@ Lobby
 
 Overlay for messages/text
 
+Leaderboard
+    Least # of Tiles/Turns
+    Most Levels
+    Fastest(?)
+
 Beam Engine
 ===========
 
@@ -94,7 +99,8 @@ Beam Engine
 
     var c=document.getElementById("myCanvas");
     var ctx=c.getContext("2d");
-    ctx.lineJoin='bevel'; 
+    ctx.globalAlpha=0.1;
+    ctx.lineJoin='bevel';
     ctx.lineWidth=10;
     ctx.moveTo(10,10);
     ctx.lineTo(150,50);
@@ -106,3 +112,35 @@ Beam Engine
     </body>
     </html>
     </code>
+
+Overlay
+=======
+
+ ::
+
+ <html>
+ <head>
+ <script type=”application/x-javascript”>
+ function draw() {
+ var canvas = document.getElementById(“canvas”);
+ if (canvas.getContext) {
+ var ctx = canvas.getContext(“2d”);
+
+ ctx.fillStyle = “rgb(40,0,0)”;
+ ctx.fillRect (20, 20, 65, 60);
+
+ ctx.fillStyle = “rgba(0, 0, 160, 0.5)”;
+ ctx.fillRect (40, 40, 65, 60);
+ }
+ }
+ </script>
+ </head>
+ <body onLoad=”draw();”>
+ <canvas id=”canvas” width=”150″ height=”150″></canvas>
+ </body>
+ </html>
+
+Canvas Stack
+============
+
+http://arc.id.au/CanvasLayers.html
