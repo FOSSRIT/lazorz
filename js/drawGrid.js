@@ -3,8 +3,9 @@
 // Copyright 2011 by Mario Andres Pagella.
 window.onload = function () {
     var tileMap = [];
-    this.busyTile = new Array(10);
+    this.tileTypeArray = new Array(10);
     this.tileIndex = new Array(10);
+    this.tileCenterPos = new Array(10);
 
     // 50px square tiles
     var tile = {
@@ -73,7 +74,7 @@ window.onload = function () {
     //For determining which tile was selected from the toolbox
     tileType = null;
     
-    setupOccupiedArray();
+    setupTileArrays();
     canvas.addEventListener('click', handleClick, false);
     drawGrid();
 
@@ -96,10 +97,10 @@ window.onload = function () {
                     case 0:
                         c.fillRect(tilePositionX, tilePositionY, tile.width, tile.height-1);
                         
-                        if(curIndex == 7 || busyTile[row][column] == false) {
+                        if(curIndex == 7 || tileTypeArray[row][column] == -1) {
                             curIndex = 0;
                             c.drawImage(mirrorList[curIndex], tilePositionX, tilePositionY, mirrorList[curIndex].width, mirrorList[curIndex].height);
-                            busyTile[row][column] = true;
+                            tileTypeArray[row][column] = tileType;
                             tileIndex[row][column] = curIndex;
                         }
                         else {
@@ -183,17 +184,24 @@ window.onload = function () {
     }
     
     // Populates the 2d array with all falses because every space is empty at the start (for now)
-    function setupOccupiedArray() {
+    function setupTileArrays() {
         for (var row = 0; row < 10; row++) {
             for (var col = 0; col < 10; col++) {
-                if(this.busyTile[row] == null)
-                    this.busyTile[row] = new Array(10);
+                var tilePosX = tile.width * row;
+                var tilePosY = tile.height * col;
+            
+                if(this.tileTypeArray[row] == null)
+                    this.tileTypeArray[row] = new Array(10);
                     
                 if(this.tileIndex[row] == null)
                     this.tileIndex[row] = new Array(10);
+                
+                if(this.tileCenterPos[row] == null)
+                    this.tileCenterPos[row] = new Array(10);
                     
-                this.busyTile[row][col] = false;
+                this.tileTypeArray[row][col] = -1;
                 this.tileIndex[row][col] = -1;
+                this.tileCenterPos[row][col] = new Point(tilePosX + (tile.width/2), tilePosY + (tile.height/2));
             }
         }
     }
