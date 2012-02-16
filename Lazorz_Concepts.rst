@@ -65,3 +65,44 @@ There could be different tile sets in terms of tools depending on which side you
 
 Remy's Thoughts
 ===========================
+
+3x3 sudoku style grid
+
+1 Player
+2 Player
+4 Player Max
+
+Lobby
+    Auto-Grouping
+    Request Grouping
+
+Overlay for messages/text
+
+Beam Engine
+===========
+
+ ::
+    <!DOCTYPE html>
+    <html>
+    <body>
+
+    <canvas id="myCanvas" width="200" height="100" style="border:3px solid #c3c3c3;">
+    Your browser does not support the canvas element.
+    </canvas>
+
+    <script type="text/javascript">
+
+    var c=document.getElementById("myCanvas");
+    var ctx=c.getContext("2d");
+    ctx.lineJoin='bevel'; 
+    ctx.lineWidth=10;
+    ctx.moveTo(10,10);
+    ctx.lineTo(150,50);
+    ctx.lineTo(10,50);
+    ctx.stroke();
+
+    </script>
+
+    </body>
+    </html>
+    </code>
