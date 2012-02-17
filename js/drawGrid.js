@@ -60,16 +60,12 @@ window.onload = function () {
 	
     var curIndex = 0;
 	
+    this.selectedTool = new Image();
+    this.selectedTool.src = "image/select.png";
     this.block = new Image();
     this.block.src = "image/no-really-block.png";
     this.start = new Image();
     this.start.src = "image/start.png";
-    this.lazer180 = new Image();
-    this.lazer180.src = "image/beam180.png";
-    this.lazer45 = new Image();
-    this.lazer45.src = "image/beam45.png";
-    this.lazer90 = new Image();
-    this.lazer90.src = "image/beam90.png";
 
     //For determining which tile was selected from the toolbox
     tileType = null;
@@ -82,6 +78,8 @@ window.onload = function () {
         //When a click is detected, translate the mouse coordinates to pixel coordinates
         var row = Math.floor((e.clientX) / tile.width);
         var column = Math.floor((e.clientY) / tile.height);
+        var tilePositionX = tile.width * row;
+        var tilePositionY = tile.height * column;
 		
         if(column < 10) {
             if (tileMap[row] == null) {
@@ -90,12 +88,9 @@ window.onload = function () {
             tileMap[row][column] = 0;
             
             if(tileType != null) {
-                var tilePositionX = tile.width * row;
-                var tilePositionY = tile.height * column;
-				
                 switch(tileType) {
                     case 0:
-                        c.fillRect(tilePositionX, tilePositionY, tile.width-1, tile.height-1);
+                        c.clearRect(tilePositionX, tilePositionY, tile.width, tile.height);
                         
                         if(curIndex == 7 || tileTypeArray[row][column] == -1) {
                             curIndex = 0;
@@ -108,16 +103,22 @@ window.onload = function () {
                             c.drawImage(mirrorList[curIndex], tilePositionX, tilePositionY, mirrorList[curIndex].width, mirrorList[curIndex].height);
                             tileIndex[row][column] = curIndex;
                         }
+                        
+                        c.strokeRect(tilePositionX, tilePositionY, tile.width, tile.height);
                         break;
                     case 1:
-                         c.fillRect(tilePositionX, tilePositionY, tile.width-1, tile.height-1);
-                         c.drawImage(block, tilePositionX, tilePositionY, block.width-1, block.height-1);
+                         c.clearRect(tilePositionX, tilePositionY, tile.width, tile.height);
+                         c.drawImage(block, tilePositionX, tilePositionY, block.width, block.height);
+                         c.strokeRect(tilePositionX, tilePositionY, tile.width, tile.height);
                          break;
                 }
             }
         }
         else {
             tileType = row;
+            c.clearRect(0, grid.height * tile.height, grid.width * tile.width, tile.height);
+            drawToolBox();
+            c.drawImage(selectedTool, tilePositionX, tilePositionY, selectedTool.width, selectedTool.height);
         }
     }
 
@@ -156,9 +157,9 @@ window.onload = function () {
         //Draw the Mirror Tile in the tool box
         c.drawImage(this.mirror45, 0, grid.height * tile.height, this.mirror45.width, this.mirror45.height);
         //Draw the block in the tool box
-        c.drawImage(this.block, this.mirror45.width, grid.height * tile.height, this.block.width, this.block.height);
-   
-        c.fillStyle = '#FFFFFF';
+        c.drawImage(this.block, this.block.width, grid.height * tile.height, this.block.width, this.block.height);
+        
+        //c.fillStyle = '#FFFFFF';
     }
     
     // Populates the 2d array with all falses because every space is empty at the start (for now)
