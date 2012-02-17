@@ -95,7 +95,7 @@ window.onload = function () {
 				
                 switch(tileType) {
                     case 0:
-                        c.fillRect(tilePositionX, tilePositionY, tile.width, tile.height-1);
+                        c.fillRect(tilePositionX, tilePositionY, tile.width-1, tile.height-1);
                         
                         if(curIndex == 7 || tileTypeArray[row][column] == -1) {
                             curIndex = 0;
@@ -110,21 +110,9 @@ window.onload = function () {
                         }
                         break;
                     case 1:
-                         //c.fillRect(tilePositionX, tilePositionY, tile.width-1, tile.height-1);
+                         c.fillRect(tilePositionX, tilePositionY, tile.width-1, tile.height-1);
                          c.drawImage(block, tilePositionX, tilePositionY, block.width-1, block.height-1);
                          break;
-                    case 2:
-                        c.drawImage(start, tilePositionX, tilePositionY, start.width, start.height);
-                        break;
-                    case 3:
-                        c.drawImage(lazer180, tilePositionX, tilePositionY, lazer180.width, lazer180.height);
-                        break;
-                    case 4:
-                        c.drawImage(lazer45, tilePositionX, tilePositionY, lazer45.width, lazer45.height);
-                        break;
-                    case 5:
-                        c.drawImage(lazer90, tilePositionX, tilePositionY, lazer90.width, lazer90.height);
-                        break;
                 }
             }
         }
@@ -143,8 +131,6 @@ window.onload = function () {
         var startCol = 0;
         var rowCount = startRow + Math.floor(canvas.width / tile.width) + 1;
         var colCount = startCol + Math.floor(canvas.height / tile.height) + 1;
-        
-        //c.drawImage(this.start, 100, 100, this.start.width, this.start.height);
         
         rowCount = ((startRow + rowCount) > grid.width) ? grid.width : rowCount;
         colCount = ((startCol + colCount) > grid.height) ? grid.height : colCount;
@@ -171,15 +157,7 @@ window.onload = function () {
         c.drawImage(this.mirror45, 0, grid.height * tile.height, this.mirror45.width, this.mirror45.height);
         //Draw the block in the tool box
         c.drawImage(this.block, this.mirror45.width, grid.height * tile.height, this.block.width, this.block.height);
-        //Draw the Mirror Tile in the tool box
-        c.drawImage(this.start, this.start.width * 2, grid.height * tile.height, this.start.width, this.start.height);
-        //180 Lazer beam
-        c.drawImage(this.lazer180, this.lazer180.width * 3, grid.height * tile.height, this.lazer180.width, this.lazer180.height);
-        //45 beam
-        c.drawImage(this.lazer45, this.lazer45.width * 4, grid.height * tile.height, this.lazer45.width, this.lazer45.height);
-        //90 beam
-        c.drawImage(this.lazer90, this.lazer90.width * 5, grid.height * tile.height, this.lazer90.width, this.lazer90.height);
-
+   
         c.fillStyle = '#FFFFFF';
     }
     
