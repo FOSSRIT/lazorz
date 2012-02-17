@@ -114,7 +114,7 @@ window.onload = function () {
                 }
             }
         }
-        else {
+        else if(column == 10) {
             tileType = row;
             c.clearRect(0, grid.height * tile.height, grid.width * tile.width, tile.height);
             drawToolBox();
