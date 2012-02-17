@@ -64,8 +64,11 @@ window.onload = function () {
     this.selectedTool.src = "image/select.png";
     this.boulder = new Image();
     this.boulder.src = "image/boulder.png";
+    
     this.start = new Image();
     this.start.src = "image/start.png";
+    this.end = new Image();
+    this.end.src = "image/end_top.png";
 
     //For determining which tile was selected from the toolbox
     tileType = null;
@@ -87,7 +90,7 @@ window.onload = function () {
             }
             tileMap[row][column] = 0;
             
-            if(tileType != null) {
+            if(tileType != null && tileTypeArray[row][column] != 'start' && tileTypeArray[row][column] != 'end') {
                 switch(tileType) {
                     case 0:
                         c.clearRect(tilePositionX, tilePositionY, tile.width, tile.height);
@@ -120,6 +123,10 @@ window.onload = function () {
             drawToolBox();
             c.drawImage(selectedTool, tilePositionX, tilePositionY, selectedTool.width, selectedTool.height);
         }
+        
+        for(var i = 0; i < 10; i++) {
+            console.log(tileTypeArray[i])
+        }
     }
 
     function drawGrid() {
@@ -145,6 +152,11 @@ window.onload = function () {
                 c.strokeRect(tilePositionX, tilePositionY, tile.width, tile.height);
             }
         }
+        
+        c.drawImage(start, 0, tile.height*9, this.start.width, this.start.height);
+        this.tileTypeArray[0][9] = 'start';
+        c.drawImage(end, tile.width*9, 0, this.end.width, this.end.height);
+        this.tileTypeArray[9][0] = 'end';
         
         setTimeout(drawToolBox, 1);
     }
