@@ -62,8 +62,8 @@ window.onload = function () {
 	
     this.selectedTool = new Image();
     this.selectedTool.src = "image/select.png";
-    this.block = new Image();
-    this.block.src = "image/no-really-block.png";
+    this.boulder = new Image();
+    this.boulder.src = "image/boulder.png";
     this.start = new Image();
     this.start.src = "image/start.png";
 
@@ -108,7 +108,7 @@ window.onload = function () {
                         break;
                     case 1:
                          c.clearRect(tilePositionX, tilePositionY, tile.width, tile.height);
-                         c.drawImage(block, tilePositionX, tilePositionY, block.width, block.height);
+                         c.drawImage(boulder, tilePositionX, tilePositionY, boulder.width, boulder.height);
                          c.strokeRect(tilePositionX, tilePositionY, tile.width, tile.height);
                          break;
                 }
@@ -156,8 +156,8 @@ window.onload = function () {
         
         //Draw the Mirror Tile in the tool box
         c.drawImage(this.mirror45, 0, grid.height * tile.height, this.mirror45.width, this.mirror45.height);
-        //Draw the block in the tool box
-        c.drawImage(this.block, this.block.width, grid.height * tile.height, this.block.width, this.block.height);
+        //Draw the boulder in the tool box
+        c.drawImage(this.boulder, this.boulder.width, grid.height * tile.height, this.boulder.width, this.boulder.height);
         
         //c.fillStyle = '#FFFFFF';
     }
