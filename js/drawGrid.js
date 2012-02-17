@@ -81,7 +81,7 @@ window.onload = function () {
         var tilePositionX = tile.width * row;
         var tilePositionY = tile.height * column;
 		
-        if(column < 10) {
+        if(column < 10 && row < 10) {
             if (tileMap[row] == null) {
                 tileMap[row] = [];
             }
@@ -114,7 +114,7 @@ window.onload = function () {
                 }
             }
         }
-        else if(column == 10) {
+        else if(column == 10 && row < 10) {
             tileType = row;
             c.clearRect(0, grid.height * tile.height, grid.width * tile.width, tile.height);
             drawToolBox();
