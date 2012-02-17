@@ -28,9 +28,9 @@ window.onload = function () {
 
     var canvas = document.getElementById('myCanvas');
     var c = canvas.getContext('2d');
-    
+    //
     //Temp loading in image for toolbox placeholder
-	//Mirrors
+    //Mirrors
     this.mirror45 = new Image();
     this.mirror45.src = "image/mirror45.png";
     this.mirror90 = new Image();
@@ -47,7 +47,7 @@ window.onload = function () {
     this.mirror315.src = "image/mirror315.png";
     this.mirror360 = new Image();
     this.mirror360.src = "image/mirror360.png";
-	
+
     var mirrorList = [];
     mirrorList[0] = this.mirror45;
     mirrorList[1] = this.mirror90;
@@ -57,14 +57,14 @@ window.onload = function () {
     mirrorList[5] = this.mirror270;
     mirrorList[6] = this.mirror315;
     mirrorList[7] = this.mirror360;
-	
+
     var curIndex = 0;
-	
+
     this.selectedTool = new Image();
     this.selectedTool.src = "image/select.png";
     this.boulder = new Image();
     this.boulder.src = "image/boulder.png";
-    
+
     this.start = new Image();
     this.start.src = "image/start.png";
     this.end = new Image();
@@ -72,7 +72,7 @@ window.onload = function () {
 
     //For determining which tile was selected from the toolbox
     tileType = null;
-    
+
     setupTileArrays();
     canvas.addEventListener('click', handleClick, false);
     drawGrid();
@@ -83,18 +83,18 @@ window.onload = function () {
         var column = Math.floor((e.clientY) / tile.height);
         var tilePositionX = tile.width * row;
         var tilePositionY = tile.height * column;
-		
+
         if(column < 10 && row < 10) {
             if (tileMap[row] == null) {
                 tileMap[row] = [];
             }
             tileMap[row][column] = 0;
-            
+
             if(tileType != null && tileTypeArray[row][column] != 'start' && tileTypeArray[row][column] != 'end') {
                 switch(tileType) {
                     case 0:
                         c.clearRect(tilePositionX, tilePositionY, tile.width, tile.height);
-                        
+
                         if(curIndex == 7 || tileTypeArray[row][column] == -1) {
                             curIndex = 0;
                             c.drawImage(mirrorList[curIndex], tilePositionX, tilePositionY, mirrorList[curIndex].width, mirrorList[curIndex].height);
@@ -106,7 +106,7 @@ window.onload = function () {
                             c.drawImage(mirrorList[curIndex], tilePositionX, tilePositionY, mirrorList[curIndex].width, mirrorList[curIndex].height);
                             tileIndex[row][column] = curIndex;
                         }
-                        
+
                         c.strokeRect(tilePositionX, tilePositionY, tile.width, tile.height);
                         break;
                     case 1:
@@ -123,8 +123,8 @@ window.onload = function () {
             drawToolBox();
             c.drawImage(selectedTool, tilePositionX, tilePositionY, selectedTool.width, selectedTool.height);
         }
-        
-	console.clear(); 
+
+    console.clear(); 
         for(var i = 0; i < 10; i++) {
             console.log(tileTypeArray[i])
         }
@@ -140,7 +140,7 @@ window.onload = function () {
         var startCol = 0;
         var rowCount = startRow + Math.floor(canvas.width / tile.width) + 1;
         var colCount = startCol + Math.floor(canvas.height / tile.height) + 1;
-        
+
         rowCount = ((startRow + rowCount) > grid.width) ? grid.width : rowCount;
         colCount = ((startCol + colCount) > grid.height) ? grid.height : colCount;
 
@@ -148,17 +148,17 @@ window.onload = function () {
             for (var col = startCol; col < colCount; col++) {
                 var tilePositionX = tile.width * row;
                 var tilePositionY = tile.height * col;
-				
+
                 //Else just draw the strokes for each rectangle tile
                 c.strokeRect(tilePositionX, tilePositionY, tile.width, tile.height);
             }
         }
-        
+
         c.drawImage(start, 0, tile.height*9, this.start.width, this.start.height);
         this.tileTypeArray[0][9] = 'start';
         c.drawImage(end, tile.width*9, 0, this.end.width, this.end.height);
         this.tileTypeArray[9][0] = 'end';
-        
+
         setTimeout(drawToolBox, 1);
     }
 
@@ -166,31 +166,31 @@ window.onload = function () {
         c.fillStyle = "rgba(00, 55, 99, 0.2)";
         c.fillRect (0, grid.height * tile.height, grid.width * tile.width, tile.height);
         c.strokeRect(0, grid.height * tile.height, grid.width * tile.width, tile.height);
-        
+        //
         //Draw the Mirror Tile in the tool box
         c.drawImage(this.mirror45, 0, grid.height * tile.height, this.mirror45.width, this.mirror45.height);
         //Draw the boulder in the tool box
         c.drawImage(this.boulder, this.boulder.width, grid.height * tile.height, this.boulder.width, this.boulder.height);
-        
+
         //c.fillStyle = '#FFFFFF';
     }
-    
+
     // Populates the 2d array with all falses because every space is empty at the start (for now)
     function setupTileArrays() {
         for (var row = 0; row < 10; row++) {
             for (var col = 0; col < 10; col++) {
                 var tilePosX = tile.width * row;
                 var tilePosY = tile.height * col;
-            
+
                 if(this.tileTypeArray[row] == null)
                     this.tileTypeArray[row] = new Array(10);
-                    
+
                 if(this.tileIndex[row] == null)
                     this.tileIndex[row] = new Array(10);
-                
+
                 if(this.tileCenterPos[row] == null)
                     this.tileCenterPos[row] = new Array(10);
-                    
+
                 this.tileTypeArray[row][col] = -1;
                 this.tileIndex[row][col] = -1;
                 this.tileCenterPos[row][col] = new Point(tilePosX + (tile.width/2), tilePosY + (tile.height/2));
