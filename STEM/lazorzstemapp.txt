@@ -3,7 +3,10 @@
 
 ■ Executive Summary
 
-■ Concept Overview: What is your Project? At what stage of development is the Project?
+■ Concept Overview:
+    What is your Project?
+
+    At what stage of development is the Project?
 
 Educational Value Proposition and Impact:
 
@@ -17,27 +20,27 @@ Research:
 
     What, if any, research has been done, and what are the outcomes?
 
-Contribution to the field of STEM Learning: 
+Contribution to the field of STEM Learning:
 
     How does your Project address the challenge of STEM curriculum through
     digital gaming?
 
-Playability: 
+Playability:
     How does the Project work?
 
-• Potential for Scale: 
-    Does your Project have potential for broad scale impact? 
+• Potential for Scale:
+    Does your Project have potential for broad scale impact?
     What is the feasibility of mass production, marketing and distribution?
 
     Please outline your thoughts around an implementation plan.
 
-• Underserved Communities: 
+• Underserved Communities:
     How can your Project be made available on a platform that is accessible to
     underserved communities, such as to being played via a dial-up internet
     connection with a standard web browser or mobile phones that have limited
     connectivity and functionality
 
-• Next Steps: 
+• Next Steps:
     Sketch out your plan for what you will do next if you win the Grand Prize.
     What is your next stage of development?
 
