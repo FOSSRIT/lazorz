@@ -84,11 +84,11 @@ BeamEngine.prototype.drawBeam = function(cVas, startPos, tileCenters) {
 	
 	// OKAY: tileCenters is the array that holds all the center points for the tiles.
 	// 		 you need to get the start tiles center pos and grab the 'x' value for the move to.
-	cVas.clearRect(0, 0, 600, 600);
-	cVas.lineWidth = 5;
+	cVas.clearRect(0, 0, 480, 528);
+	cVas.lineWidth = 4;
 	cVas.strokeStyle = "#FF0000";
 	cVas.moveTo(tileCenters[startPos.x][startPos.y].x, tileCenters[startPos.x][startPos.y].y);
-	cVas.lineTo(tileCenters[startPos.x][startPos.y].x + 420, tileCenters[startPos.x][startPos.y].y);
+	cVas.lineTo(tileCenters[9][9].x - 3, tileCenters[9][9].y);
 	cVas.stroke();
 }
 // run it
