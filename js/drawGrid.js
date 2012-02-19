@@ -27,13 +27,14 @@ window.onload = function () {
     }
 
     var canvas = document.getElementById('myCanvas');
+	var lineCanvas = document.getElementById('lineCanvas');
 	var engine = document.getElementById('engine');
 	var c = canvas.getContext('2d');
+	var lc = lineCanvas.getContext('2d');
 	
 	//Create a BeamEngine object
 	var beamEngine = new BeamEngine(engine,tileTypeArray);
 	
-    //
     //Temp loading in image for toolbox placeholder
     //Mirrors
     this.mirror45 = new Image();
@@ -74,12 +75,15 @@ window.onload = function () {
     this.start.src = "image/start.png";
     this.end = new Image();
     this.end.src = "image/end_top.png";
+	
+	var startPos = new Point(0, 9);
+	var endPos = new Point(9, 0);
 
     //For determining which tile was selected from the toolbox
     tileType = null;
 
     setupTileArrays();
-    canvas.addEventListener('click', handleClick, false);
+    lineCanvas.addEventListener('click', handleClick, false);
     drawGrid();
 
     function handleClick(e) {
@@ -88,7 +92,10 @@ window.onload = function () {
         var column = Math.floor((e.clientY) / tile.height);
         var tilePositionX = tile.width * row;
         var tilePositionY = tile.height * column;
-
+		
+		c.strokeStyle = "#000000";
+		c.lineWidth = 1;
+			
         if(column < 10 && row < 10) {
             if (tileMap[row] == null) {
                 tileMap[row] = [];
@@ -96,19 +103,20 @@ window.onload = function () {
             tileMap[row][column] = 0;
 
             if(tileType != null && tileTypeArray[row][column] != 'start' && tileTypeArray[row][column] != 'end') {
-                switch(tileType) {
+                switch(Math.floor(tileType)) {
                     case 0:
                         c.clearRect(tilePositionX, tilePositionY, tile.width, tile.height);
 
                         if(curIndex == 7 || tileTypeArray[row][column] == -1) {
                             curIndex = 0;
                             c.drawImage(mirrorList[curIndex], tilePositionX, tilePositionY, mirrorList[curIndex].width, mirrorList[curIndex].height);
-                            tileTypeArray[row][column] = tileType;
+                            tileTypeArray[row][column] = tileType + .0;
                             tileIndex[row][column] = curIndex;
                         }
                         else {
                             curIndex = tileIndex[row][column]+1;
                             c.drawImage(mirrorList[curIndex], tilePositionX, tilePositionY, mirrorList[curIndex].width, mirrorList[curIndex].height);
+                            tileTypeArray[row][column] = tileType + curIndex/10;
                             tileIndex[row][column] = curIndex;
                         }
 
@@ -120,6 +128,9 @@ window.onload = function () {
                          c.strokeRect(tilePositionX, tilePositionY, tile.width, tile.height);
                          break;
                 }
+				
+				beamEngine.update(tileTypeArray);
+				beamEngine.drawBeam(lc, startPos, tileCenterPos);
             }
         }
         else if(column == 10 && row < 10) {
@@ -128,12 +139,10 @@ window.onload = function () {
             drawToolBox();
             c.drawImage(selectedTool, tilePositionX, tilePositionY, selectedTool.width, selectedTool.height);
         }
-		beamEngine.update(tileTypeArray);
-		beamEngine.drawBeam();
-    //console.clear(); 
-        //for(var i = 0; i < 10; i++) {
-            //console.log(tileTypeArray[i])
-        //}
+		/*console.clear(); 
+        for(var i = 0; i < 10; i++) {
+            console.log(tileTypeArray[i])
+        }*/
     }
 
     function drawGrid() {
@@ -149,7 +158,7 @@ window.onload = function () {
 
         rowCount = ((startRow + rowCount) > grid.width) ? grid.width : rowCount;
         colCount = ((startCol + colCount) > grid.height) ? grid.height : colCount;
-
+		
         for (var row = startRow; row < rowCount; row++) {
             for (var col = startCol; col < colCount; col++) {
                 var tilePositionX = tile.width * row;
@@ -160,10 +169,10 @@ window.onload = function () {
             }
         }
 
-        c.drawImage(start, 0, tile.height*9, this.start.width, this.start.height);
-        this.tileTypeArray[0][9] = 'start';
-        c.drawImage(end, tile.width*9, 0, this.end.width, this.end.height);
-        this.tileTypeArray[9][0] = 'end';
+		c.drawImage(start, startPos.x, tile.height*startPos.y, this.start.width, this.start.height);
+        this.tileTypeArray[startPos.x][startPos.y] = 'start';
+        c.drawImage(end, tile.width*endPos.x, endPos.y, this.end.width, this.end.height);
+        this.tileTypeArray[endPos.x][endPos.y] = 'end';
 
         setTimeout(drawToolBox, 1);
     }
@@ -197,7 +206,7 @@ window.onload = function () {
                 if(this.tileCenterPos[row] == null)
                     this.tileCenterPos[row] = new Array(10);
 
-                this.tileTypeArray[row][col] = -1;
+                this.tileTypeArray[row][col] = 999;
                 this.tileIndex[row][col] = -1;
                 this.tileCenterPos[row][col] = new Point(tilePosX + (tile.width/2), tilePosY + (tile.height/2));
             }
