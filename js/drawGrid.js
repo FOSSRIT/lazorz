@@ -27,7 +27,12 @@ window.onload = function () {
     }
 
     var canvas = document.getElementById('myCanvas');
-    var c = canvas.getContext('2d');
+	var engine = document.getElementById('engine');
+	var c = canvas.getContext('2d');
+	
+	//Create a BeamEngine object
+	var beamEngine = new BeamEngine(engine,tileTypeArray);
+	
     //
     //Temp loading in image for toolbox placeholder
     //Mirrors
@@ -123,11 +128,12 @@ window.onload = function () {
             drawToolBox();
             c.drawImage(selectedTool, tilePositionX, tilePositionY, selectedTool.width, selectedTool.height);
         }
-
-    console.clear(); 
-        for(var i = 0; i < 10; i++) {
-            console.log(tileTypeArray[i])
-        }
+		beamEngine.update(tileTypeArray);
+		beamEngine.drawBeam();
+    //console.clear(); 
+        //for(var i = 0; i < 10; i++) {
+            //console.log(tileTypeArray[i])
+        //}
     }
 
     function drawGrid() {
