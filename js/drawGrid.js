@@ -76,7 +76,7 @@ window.onload = function () {
     this.end = new Image();
     this.end.src = "image/end_top.png";
 	
-	var startPos = new Point(0, 9);
+	var startPos = new Point(0, 5);
 	var endPos = new Point(9, 0);
 
     //For determining which tile was selected from the toolbox
@@ -126,10 +126,12 @@ window.onload = function () {
                          c.clearRect(tilePositionX, tilePositionY, tile.width, tile.height);
                          c.drawImage(boulder, tilePositionX, tilePositionY, boulder.width, boulder.height);
                          c.strokeRect(tilePositionX, tilePositionY, tile.width, tile.height);
+						 tileTypeArray[row][column] = tileType;
                          break;
                 }
 				
 				beamEngine.update(tileTypeArray);
+				lineCanvas.width = lineCanvas.width;
 				beamEngine.drawBeam(lc, startPos, tileCenterPos);
             }
         }
