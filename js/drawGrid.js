@@ -132,7 +132,7 @@ window.onload = function () {
 				
 				beamEngine.update(tileTypeArray);
 				lineCanvas.width = lineCanvas.width;
-				beamEngine.drawBeam(lc, startPos, tileCenterPos);
+				beamEngine.drawBeam(lc, startPos, endPos, tileCenterPos);
             }
         }
         else if(column == 10 && row < 10) {
@@ -151,8 +151,6 @@ window.onload = function () {
         c.fillStyle = '#FFFFFF';
         c.fillRect (0, 0, canvas.width, canvas.height);
 
-        drawToolBox(); //Add the toolbox to the bottom of the grid
-
         var startRow = 0;
         var startCol = 0;
         var rowCount = startRow + Math.floor(canvas.width / tile.width) + 1;
@@ -170,26 +168,25 @@ window.onload = function () {
                 c.strokeRect(tilePositionX, tilePositionY, tile.width, tile.height);
             }
         }
-
-		c.drawImage(start, startPos.x, tile.height*startPos.y, this.start.width, this.start.height);
-        this.tileTypeArray[startPos.x][startPos.y] = 'start';
-        c.drawImage(end, tile.width*endPos.x, endPos.y, this.end.width, this.end.height);
-        this.tileTypeArray[endPos.x][endPos.y] = 'end';
-
-        setTimeout(drawToolBox, 1);
+		
+		setTimeout(drawToolBox, 1);
     }
 
-    function drawToolBox() {
+    function drawToolBox() {	
         c.fillStyle = "rgba(00, 55, 99, 0.2)";
         c.fillRect (0, grid.height * tile.height, grid.width * tile.width, tile.height);
         c.strokeRect(0, grid.height * tile.height, grid.width * tile.width, tile.height);
-        //
+		
         //Draw the Mirror Tile in the tool box
         c.drawImage(this.mirror45, 0, grid.height * tile.height, this.mirror45.width, this.mirror45.height);
         //Draw the boulder in the tool box
         c.drawImage(this.boulder, this.boulder.width, grid.height * tile.height, this.boulder.width, this.boulder.height);
 
         //c.fillStyle = '#FFFFFF';
+		c.drawImage(start, startPos.x, tile.height*startPos.y, this.start.width, this.start.height);
+        this.tileTypeArray[startPos.x][startPos.y] = 'start';
+        c.drawImage(end, tile.width*endPos.x, endPos.y, this.end.width, this.end.height);
+        this.tileTypeArray[endPos.x][endPos.y] = 'end';
     }
 
     // Populates the 2d array with all falses because every space is empty at the start (for now)

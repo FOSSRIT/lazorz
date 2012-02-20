@@ -21,9 +21,15 @@ function nothing(row, col, hor_v, ver_v) {
     return [row2, col2, hor_v, ver_v];
 }
 
-function level_complete() {
+function level_complete(cVas, endPos, tileCenters) {
 	levelComplete = true;
 	console.log("LEVEL COMPLETE")
+	cVas.fillStyle = "#FF0000";
+	cVas.beginPath();
+	cVas.arc(tileCenters[endPos.x][endPos.y].x, tileCenters[endPos.x][endPos.y].y, 12, 0, Math.PI*2, true);
+	cVas.closePath();
+	cVas.fill();
+	cVas.fillStyle = "#000000";
 }
 
 function mirror_45(row, col, hor_v, ver_v) {
@@ -121,7 +127,7 @@ function block(row, col, hor_v, ver_v) {
     return nothing(row, col, hor_v, ver_v);
 }
 
-BeamEngine.prototype.drawBeam = function(cVas, startPos, tileCenters) {
+BeamEngine.prototype.drawBeam = function(cVas, startPos, endPos, tileCenters) {
     var row, col;
     row = startPos.x;
 	col = startPos.y;
@@ -162,7 +168,7 @@ BeamEngine.prototype.drawBeam = function(cVas, startPos, tileCenters) {
 			//console.log(results);
 		}
 		else{
-			level_complete();
+			level_complete(cVas, endPos, tileCenters);
 			break;
 		}
 	}
