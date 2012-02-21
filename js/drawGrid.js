@@ -169,6 +169,7 @@ window.onload = function () {
             }
         }
 		
+		beamEngine.drawBeam(lc, startPos, endPos, tileCenterPos);
 		setTimeout(drawToolBox, 1);
     }
 
