@@ -57,7 +57,7 @@ function nothing(col, row, hor_v, ver_v) {
 function level_complete(cVas, endPos, tileCenters) {
 	levelComplete = true;
 	console.log("LEVEL COMPLETE")
-	cVas.fillStyle = "#FF0000";
+	cVas.fillStyle = cVas.strokeStyle;
 	cVas.beginPath();
 	cVas.arc(tileCenters[endPos.x][endPos.y].x, tileCenters[endPos.x][endPos.y].y, 12, 0, Math.PI*2, true);
 	cVas.closePath();
@@ -160,6 +160,30 @@ function block(col, row, hor_v, ver_v) {
     return nothing(col, row, this.hor_v, this.ver_v);
 }
 
+function red_filter(col, row, hor_v, ver_v, cVas, tileCenters) {
+	cVas.beginPath();
+    cVas.moveTo(tileCenters[col][row].x, tileCenters[col][row].y);
+	cVas.strokeStyle = "#FF0000";
+	cVas.closePath();
+    return nothing(col, row, this.hor_v, this.ver_v);
+}
+
+function green_filter(col, row, hor_v, ver_v, cVas, tileCenters) {
+	cVas.beginPath();
+    cVas.moveTo(tileCenters[col][row].x, tileCenters[col][row].y);
+	cVas.strokeStyle = "#00FF00";
+	cVas.closePath();
+    return nothing(col, row, this.hor_v, this.ver_v);
+}
+
+function blue_filter(col, row, hor_v, ver_v, cVas, tileCenters) {
+	cVas.beginPath();
+    cVas.moveTo(tileCenters[col][row].x, tileCenters[col][row].y);
+    cVas.strokeStyle = "#0000FF";
+	cVas.closePath();
+	return nothing(col, row, this.hor_v, this.ver_v);
+}
+
 BeamEngine.prototype.drawBeam = function(cVas, startPos, endPos, tileCenters) {
     var col, row;
     row = startPos.x;
@@ -177,11 +201,16 @@ BeamEngine.prototype.drawBeam = function(cVas, startPos, endPos, tileCenters) {
         0.5: mirror_270,
         0.6: mirror_315,
         0.7: mirror_360,
-        1: block,
+        1: green_filter,
+		2: red_filter,
+		3: green_filter,
+		4: blue_filter,
     }
 
 	// OKAY: tileCenters is the array that holds all the center points for the tiles.
 	// 		 you need to get the start tiles center pos and grab the 'x' value for the move to.
+	
+	cVas.beginPath();
 	cVas.lineWidth = 4;
 	cVas.strokeStyle = "#FF0000";
 	cVas.moveTo(tileCenters[startPos.x][startPos.y].x, tileCenters[startPos.x][startPos.y].y);
@@ -190,7 +219,7 @@ BeamEngine.prototype.drawBeam = function(cVas, startPos, endPos, tileCenters) {
 	for(var i = 0; i < 110; i++) {		
 		if(grid[row][col] != 'end') {
 			var callback = lookup[grid[row][col]];
-			var results = callback(row, col, this.hor_v, this.ver_v);
+			var results = callback(row, col, this.hor_v, this.ver_v, cVas, tileCenters);
 			row = results[0];
 			col = results[1];
 			this.hor_v = results[2];
@@ -204,6 +233,8 @@ BeamEngine.prototype.drawBeam = function(cVas, startPos, endPos, tileCenters) {
 			break;
 		}
 	}
+	
+	cVas.closePath();
 }
 // run it
 //console.log("loop call");
