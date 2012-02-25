@@ -76,7 +76,7 @@ window.onload = function () {
     this.end = new Image();
     this.end.src = "image/end_top.png";
 	
-	var startPos = new Point(0, 5);
+	var startPos = new Point(3, 5);
 	var endPos = new Point(9, 0);
 
     //For determining which tile was selected from the toolbox
@@ -169,7 +169,6 @@ window.onload = function () {
             }
         }
 		
-		beamEngine.drawBeam(lc, startPos, endPos, tileCenterPos);
 		setTimeout(drawToolBox, 1);
     }
 
@@ -184,10 +183,12 @@ window.onload = function () {
         c.drawImage(this.boulder, this.boulder.width, grid.height * tile.height, this.boulder.width, this.boulder.height);
 
         //c.fillStyle = '#FFFFFF';
-		c.drawImage(start, startPos.x, tile.height*startPos.y, this.start.width, this.start.height);
+		c.drawImage(start, tile.height*startPos.x, tile.height*startPos.y, this.start.width, this.start.height);
         this.tileTypeArray[startPos.x][startPos.y] = 'start';
-        c.drawImage(end, tile.width*endPos.x, endPos.y, this.end.width, this.end.height);
+        c.drawImage(end, tile.width*endPos.x, tile.height*endPos.y, this.end.width, this.end.height);
         this.tileTypeArray[endPos.x][endPos.y] = 'end';
+		
+		beamEngine.drawBeam(lc, startPos, endPos, tileCenterPos);
     }
 
     // Populates the 2d array with all falses because every space is empty at the start (for now)

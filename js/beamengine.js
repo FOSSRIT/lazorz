@@ -1,5 +1,8 @@
 this.grid;
 this.levelComplete = false;
+this.dir = Math.floor((Math.random() * 4));
+this.hor_v = 0;
+this.ver_v = 0;
 
 function BeamEngine(engine, tileTypeArr)
 {
@@ -15,15 +18,32 @@ BeamEngine.prototype.update = function(tileTypeArr)
 }
 
 function startingPiece(col, row, hor_v, ver_v) {
-	var col2 = col + ver_v;
-	var row2 = row + hor_v;
+	if(this.dir == 0) {
+		this.ver_v = 0;
+		this.hor_v = 1;
+	}
+	else if(this.dir == 1) {
+		this.ver_v = 1;
+		this.hor_v = 0;
+	}
+	else if(this.dir == 2) {
+		this.ver_v = 0;
+		this.hor_v = -1;
+	}
+	else if(this.dir == 3) {
+		this.ver_v = -1;
+		this.hor_v = 0;
+	}
+
+	var col2 = col + this.ver_v;
+	var row2 = row + this.hor_v;
 		
-    return [col2, row2, hor_v, ver_v];
+    return [col2, row2, this.hor_v, this.ver_v];
 }
 
 function nothing(col, row, hor_v, ver_v) {
-	var col2 = col + ver_v;
-	var row2 = row + hor_v;
+	var col2 = col + this.ver_v;
+	var row2 = row + this.hor_v;
 	
 	if(col2 < 0 || col2 > 9)
 		col2 = col;
@@ -31,7 +51,7 @@ function nothing(col, row, hor_v, ver_v) {
 	if(row2 < 0 || row2 > 9)
 		row2 = row;
 		
-    return [col2, row2, hor_v, ver_v];
+    return [col2, row2, this.hor_v, this.ver_v];
 }
 
 function level_complete(cVas, endPos, tileCenters) {
@@ -46,106 +66,104 @@ function level_complete(cVas, endPos, tileCenters) {
 }
 
 function mirror_45(col, row, hor_v, ver_v) {
-	if(ver_v > 0) {
-		hor_v = ver_v * -1;
-		ver_v = 0;
+	if(this.ver_v > 0) {
+		this.hor_v = this.ver_v * -1;
+		this.ver_v = 0;
 	}
-	else if(hor_v > 0) {
-		ver_v = hor_v * -1;
-		hor_v = 0;
+	else if(this.hor_v > 0) {
+		this.ver_v = this.hor_v * -1;
+		this.hor_v = 0;
 	}
 	else {
-		hor_v = 0;
-		ver_v = 0;
+		this.hor_v = 0;
+		this.ver_v = 0;
 	}
 	
-    return nothing(col, row, hor_v, ver_v);
+    return nothing(col, row, this.hor_v, this.ver_v);
 }
 
 function mirror_90(col, row, hor_v, ver_v) {
-	ver_v = 0;
-    hor_v = 0;
-    return nothing(col, row, hor_v, ver_v);
+	this.ver_v = 0;
+    this.hor_v = 0;
+    return nothing(col, row, this.hor_v, this.ver_v);
 }
 
 function mirror_135(col, row, hor_v, ver_v) {
-	if(ver_v > 0) {
-		hor_v = ver_v * 1;
-		ver_v = 0;
+	if(this.ver_v > 0) {
+		this.hor_v = this.ver_v * 1;
+		this.ver_v = 0;
 	}
-	else if(hor_v < 0) {
-		ver_v = hor_v * 1;
-		hor_v = 0;
+	else if(this.hor_v < 0) {
+		this.ver_v = this.hor_v * 1;
+		this.hor_v = 0;
 	}
 	else {
-		ver_v = 0;
-		hor_v = 0;
+		this.ver_v = 0;
+		this.hor_v = 0;
 	}
-    return nothing(col, row, hor_v, ver_v);
+    return nothing(col, row, this.hor_v, this.ver_v);
 }
 
 function mirror_180(col, row, hor_v, ver_v) {
-    ver_v = 0;
-    hor_v = 0;
-    return nothing(col, row, hor_v, ver_v);
+    this.ver_v = 0;
+    this.hor_v = 0;
+    return nothing(col, row, this.hor_v, this.ver_v);
 }
 
 function mirror_225(col, row, hor_v, ver_v) {
-    if(ver_v < 0) {
-		hor_v = ver_v * -1;
-		ver_v = 0;
+    if(this.ver_v < 0) {
+		this.hor_v = this.ver_v * -1;
+		this.ver_v = 0;
 	}
-	else if(hor_v < 0) {
-		ver_v = hor_v * -1;
-		hor_v = 0;
+	else if(this.hor_v < 0) {
+		this.ver_v = this.hor_v * -1;
+		this.hor_v = 0;
 	}
 	else {
-		ver_v = 0;
-		hor_v = 0;
+		this.ver_v = 0;
+		this.hor_v = 0;
 	}
-    return nothing(col, row, hor_v, ver_v);
+    return nothing(col, row, this.hor_v, this.ver_v);
 }
 
 function mirror_270(col, row, hor_v, ver_v) {
-    ver_v = 0;
-    hor_v = 0;
-    return nothing(col, row, hor_v, ver_v);
+    this.ver_v = 0;
+    this.hor_v = 0;
+    return nothing(col, row, this.hor_v, this.ver_v);
 }
 
 function mirror_315(col, row, hor_v, ver_v) {
-    if(ver_v < 0) {
-		hor_v = ver_v * 1;
-		ver_v = 0;
+    if(this.ver_v < 0) {
+		this.hor_v = this.ver_v * 1;
+		this.ver_v = 0;
 	}
-	else if(hor_v > 0) {
-		ver_v = hor_v * 1;
-		hor_v = 0;
+	else if(this.hor_v > 0) {
+		this.ver_v = this.hor_v * 1;
+		this.hor_v = 0;
 	}
 	else {
-		ver_v = 0;
-		hor_v = 0;
+		this.ver_v = 0;
+		this.hor_v = 0;
 	}
-    return nothing(col, row, hor_v, ver_v);
+    return nothing(col, row, this.hor_v, this.ver_v);
 }
 
 function mirror_360(col, row, hor_v, ver_v) {
-    ver_v = 0;
-    hor_v = 0;
-    return nothing(col, row, hor_v, ver_v);
+    this.ver_v = 0;
+    this.hor_v = 0;
+    return nothing(col, row, this.hor_v, this.ver_v);
 }
 
 function block(col, row, hor_v, ver_v) {
-    ver_v = 0;
-    hor_v = 0;
-    return nothing(col, row, hor_v, ver_v);
+    this.ver_v = 0;
+    this.hor_v = 0;
+    return nothing(col, row, this.hor_v, this.ver_v);
 }
 
 BeamEngine.prototype.drawBeam = function(cVas, startPos, endPos, tileCenters) {
     var col, row;
     row = startPos.x;
 	col = startPos.y;
-    var hor_v = 0;
-    var ver_v = 1;
 
     var lookup = {
 		'start': startingPiece,
@@ -169,14 +187,14 @@ BeamEngine.prototype.drawBeam = function(cVas, startPos, endPos, tileCenters) {
 	cVas.moveTo(tileCenters[startPos.x][startPos.y].x, tileCenters[startPos.x][startPos.y].y);
 	this.levelComplete = false;
 	
-	for(var i = 0; i < 110; i++) {
+	for(var i = 0; i < 110; i++) {		
 		if(grid[row][col] != 'end') {
 			var callback = lookup[grid[row][col]];
-			var results = callback(row, col, hor_v, ver_v);
+			var results = callback(row, col, this.hor_v, this.ver_v);
 			row = results[0];
 			col = results[1];
-			hor_v = results[2];
-			ver_v = results[3];
+			this.hor_v = results[2];
+			this.ver_v = results[3];
 			cVas.lineTo(tileCenters[row][col].x, tileCenters[row][col].y);
 			cVas.stroke();
 			//console.log(results);
