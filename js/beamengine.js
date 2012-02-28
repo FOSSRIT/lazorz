@@ -1,6 +1,6 @@
 this.grid;
 this.levelComplete = false;
-this.dir = Math.floor((Math.random() * 4));
+this.dir = 1; //Math.floor((Math.random() * 4));
 this.hor_v = 0;
 this.ver_v = 0;
 
