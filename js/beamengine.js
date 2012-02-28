@@ -37,7 +37,7 @@ function startingPiece(col, row, hor_v, ver_v) {
 
 	var col2 = col + this.ver_v;
 	var row2 = row + this.hor_v;
-		
+    
     return [col2, row2, this.hor_v, this.ver_v];
 }
 
