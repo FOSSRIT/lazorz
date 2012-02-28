@@ -37,7 +37,7 @@ function startingPiece(col, row, hor_v, ver_v) {
 
 	var col2 = col + this.ver_v;
 	var row2 = row + this.hor_v;
-		
+    
     return [col2, row2, this.hor_v, this.ver_v];
 }
 
@@ -201,9 +201,9 @@ BeamEngine.prototype.drawBeam = function(cVas, startPos, endPos, tileCenters) {
         0.5: mirror_270,
         0.6: mirror_315,
         0.7: mirror_360,
-		1: red_filter,
-		2: green_filter,
-        3: blue_filter,
+		1.0: red_filter,
+		1.1: green_filter,
+        1.2: blue_filter,
     }
 
 	// OKAY: tileCenters is the array that holds all the center points for the tiles.
