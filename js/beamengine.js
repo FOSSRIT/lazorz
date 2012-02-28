@@ -190,8 +190,8 @@ BeamEngine.prototype.drawBeam = function(cVas, startPos, endPos, tileCenters) {
 	col = startPos.y;
 
     var lookup = {
-		'start': startingPiece,
-		'end': level_complete,
+		100: startingPiece,
+		101: level_complete,
         999: nothing,
         0: mirror_45,
         0.1: mirror_90,
@@ -216,7 +216,7 @@ BeamEngine.prototype.drawBeam = function(cVas, startPos, endPos, tileCenters) {
 	this.levelComplete = false;
 	
 	for(var i = 0; i < 110; i++) {		
-		if(grid[row][col] != 'end') {
+		if(grid[row][col] != 101) {
 			var callback = lookup[grid[row][col]];
 			var results = callback(row, col, this.hor_v, this.ver_v, cVas, tileCenters);
 			row = results[0];
