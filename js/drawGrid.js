@@ -78,6 +78,9 @@ window.onload = function () {
     this.greenFilter.src = "image/green_filter.png";
     this.blueFilter = new Image();
     this.blueFilter.src = "image/blue_filter.png";
+    
+    this.deleteTiles = new Image();
+    this.deleteTiles.src = "image/delete.png";
 
     this.start = new Image();
     this.start.src = "image/start.png";
@@ -148,6 +151,10 @@ window.onload = function () {
                          c.strokeRect(tilePositionX, tilePositionY, tile.width, tile.height);
 						 tileTypeArray[row][column] = tileType;
                          break;
+                    case 9:
+                        tc.clearRect(tilePositionX, tilePositionY, tile.width, tile.height);
+                        tileTypeArray[row][column] = 999;
+                        break;
                 }
 				
 				beamEngine.update(tileTypeArray);
@@ -201,9 +208,13 @@ window.onload = function () {
         c.drawImage(this.mirror45, 0, grid.height * tile.height, this.mirror45.width, this.mirror45.height);
         //Draw the boulder in the tool box
         //c.drawImage(this.boulder, this.boulder.width, grid.height * tile.height, this.boulder.width, this.boulder.height);
+        //Draw filters in the toolbox
         c.drawImage(this.redFilter, this.redFilter.width, grid.height * tile.height, this.redFilter.width, this.redFilter.height);
         c.drawImage(this.greenFilter, this.greenFilter.width*2, grid.height * tile.height, this.greenFilter.width, this.greenFilter.height);
         c.drawImage(this.blueFilter, this.blueFilter.width*3, grid.height * tile.height, this.blueFilter.width, this.blueFilter.height);
+        //Draw delete symbol
+        c.drawImage(this.deleteTiles, this.deleteTiles.width*9, grid.height * tile.height, this.deleteTiles.width, this.deleteTiles.height);
+        
 
         //c.fillStyle = '#FFFFFF';
 		tc.drawImage(start, tile.height*startPos.x, tile.height*startPos.y, this.start.width, this.start.height);
