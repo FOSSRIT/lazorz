@@ -2,8 +2,13 @@ Lorin Peterson
 ==============
 
 Lorin is a 5th year Game Design and Development Student of the Interactive
-Games and Media department at Rochester Insitute of Technology
-(http://rit.edu).
+Games and Media department (http://igm.rit.edu) at Rochester Insitute of
+Technology (http://rit.edu). Over the course of Lorin's academic career, she
+has written games using XNA, built interactive multi-touch interfaces using the
+Kinect, and presented her work at the Strong Museum of Play. When she isn't
+crafting bits, she serves as a Student Ambassador for the Golisano College of
+Computing and Information Sciences, helping to plan college wide initiatives
+that strengthen ties between RIT students, Faculty, and Alumni.
 
 
 Vincent Cardinale
@@ -11,6 +16,11 @@ Vincent Cardinale
 
 Vin is a 5th year Game Design and Development Student of the Interactive Games
 and Media department at Rochester Insitute of Technology (http://rit.edu).
+During his co-ops with SPX Rochester, a Fortune 500 Company, Vin integrated his
+modified product configuration architecture into the existing eSales platform,
+while closing a sundry of bugs. During his coursework, Vin has contributed to a
+number of 2d and 3d games using XNA, Visual Studio, Flash, ActionScript, C#,
+HTML5, and javascript.
 
 
 Remy DeCausemaker

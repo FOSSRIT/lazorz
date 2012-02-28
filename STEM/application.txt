@@ -36,4 +36,3 @@ words and must contain information about the Applicant's or Team member's
 relevant work experience and educational background, and should be submitted in
 the form of a portable document format (PDF) file. For Teams, all Team member
 biographies must be included in one PDF document.
-
