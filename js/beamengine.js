@@ -171,7 +171,7 @@ function red_filter(col, row, hor_v, ver_v, cVas, tileCenters) {
 function green_filter(col, row, hor_v, ver_v, cVas, tileCenters) {
 	cVas.beginPath();
     cVas.moveTo(tileCenters[col][row].x, tileCenters[col][row].y);
-	cVas.strokeStyle = "#00FF00";
+	cVas.strokeStyle = "rgba(00, 174, 00, 1)";
 	cVas.closePath();
     return nothing(col, row, this.hor_v, this.ver_v);
 }
