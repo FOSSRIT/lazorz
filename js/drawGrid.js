@@ -104,7 +104,12 @@ window.onload = function () {
     tileType = null;
 
     setupTileArrays();
-    tileCanvas.addEventListener('click', handleClick, false);
+    //tileCanvas.addEventListener('click', handleClick, false);
+    $("#tileCanvas").peerbind("mouseup", {
+        peer: function(e) {},
+        local: handleClick
+    });
+    
     drawGrid();
 
     function handleClick(e) {
