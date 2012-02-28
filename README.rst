@@ -4,7 +4,7 @@ Lazorz is an educational game targeting the middle-school curriculum about the
 physics of light.
 
 Copyright Notice
-================
+======================
 In compliance with the instructions on this `link
 <http://oreilly.com/pub/a/oreilly/ask_tim/2001/codepolicy.html>`_.  here is the
 required legalese:
