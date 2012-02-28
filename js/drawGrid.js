@@ -66,18 +66,28 @@ window.onload = function () {
     mirrorList[6] = this.mirror315;
     mirrorList[7] = this.mirror360;
 
-    var curIndex = 0;
+    var mirIndex = 0;
 
     this.selectedTool = new Image();
     this.selectedTool.src = "image/select.png";
     //this.boulder = new Image();
     //this.boulder.src = "image/boulder.png";
+    
+    this.toolboxFilter = new Image();
+    this.toolboxFilter.src = "image/toolbox_filter.png";
     this.redFilter = new Image();
     this.redFilter.src = "image/red_filter.png";
     this.greenFilter = new Image();
     this.greenFilter.src = "image/green_filter.png";
     this.blueFilter = new Image();
     this.blueFilter.src = "image/blue_filter.png";
+    
+    var filterList = [];
+    filterList[0] = this.redFilter;
+    filterList[1] = this.greenFilter;
+    filterList[2] = this.blueFilter;
+    
+    var filIndex = 0;
     
     this.deleteTiles = new Image();
     this.deleteTiles.src = "image/delete.png";
@@ -118,38 +128,39 @@ window.onload = function () {
                     case 0:
                         tc.clearRect(tilePositionX, tilePositionY, tile.width, tile.height);
 
-                        if(curIndex == 7 || tileTypeArray[row][column] == -1) {
-                            curIndex = 0;
-                            tc.drawImage(mirrorList[curIndex], tilePositionX, tilePositionY, mirrorList[curIndex].width, mirrorList[curIndex].height);
+                        if(tileIndex[row][column] == mirrorList.length-1 || tileTypeArray[row][column] == 999) {
+                            mirIndex = 0;
+                            tc.drawImage(mirrorList[mirIndex], tilePositionX, tilePositionY, mirrorList[mirIndex].width, mirrorList[mirIndex].height);
                             tileTypeArray[row][column] = tileType + .0;
-                            tileIndex[row][column] = curIndex;
+                            tileIndex[row][column] = mirIndex;
                         }
                         else {
-                            curIndex = tileIndex[row][column]+1;
-                            tc.drawImage(mirrorList[curIndex], tilePositionX, tilePositionY, mirrorList[curIndex].width, mirrorList[curIndex].height);
-                            tileTypeArray[row][column] = tileType + curIndex/10;
-                            tileIndex[row][column] = curIndex;
+                            mirIndex = tileIndex[row][column]+1;
+                            tc.drawImage(mirrorList[mirIndex], tilePositionX, tilePositionY, mirrorList[mirIndex].width, mirrorList[mirIndex].height);
+                            tileTypeArray[row][column] = tileType + mirIndex/10;
+                            tileIndex[row][column] = mirIndex;
                         }
 
                         c.strokeRect(tilePositionX, tilePositionY, tile.width, tile.height);
                         break;
                     case 1:
                          tc.clearRect(tilePositionX, tilePositionY, tile.width, tile.height);
-                         tc.drawImage(redFilter, tilePositionX, tilePositionY, redFilter.width, redFilter.height);
+                         
+                         if(tileIndex[row][column] == filterList.length-1 || tileTypeArray[row][column] == 999) {
+                            filIndex = 0;
+                            tc.drawImage(filterList[filIndex], tilePositionX, tilePositionY, filterList[filIndex].width, filterList[filIndex].height);
+                            tileTypeArray[row][column] = tileType + .0;
+                            tileIndex[row][column] = filIndex;
+                         }
+                         else {
+                            filIndex = tileIndex[row][column]+1;
+                            tc.drawImage(filterList[filIndex], tilePositionX, tilePositionY, filterList[filIndex].width, filterList[filIndex].height);
+                            tileTypeArray[row][column] = tileType + filIndex/10;
+                            tileIndex[row][column] = filIndex;
+                         }
+                         
+                         console.log(tileTypeArray[row][column])
                          c.strokeRect(tilePositionX, tilePositionY, tile.width, tile.height);
-						 tileTypeArray[row][column] = tileType;
-                         break;
-                    case 2:
-                         tc.clearRect(tilePositionX, tilePositionY, tile.width, tile.height);
-                         tc.drawImage(greenFilter, tilePositionX, tilePositionY, greenFilter.width, greenFilter.height);
-                         c.strokeRect(tilePositionX, tilePositionY, tile.width, tile.height);
-						 tileTypeArray[row][column] = tileType;
-                         break;
-                    case 3:
-                         tc.clearRect(tilePositionX, tilePositionY, tile.width, tile.height);
-                         tc.drawImage(blueFilter, tilePositionX, tilePositionY, blueFilter.width, blueFilter.height);
-                         c.strokeRect(tilePositionX, tilePositionY, tile.width, tile.height);
-						 tileTypeArray[row][column] = tileType;
                          break;
                     case 9:
                         tc.clearRect(tilePositionX, tilePositionY, tile.width, tile.height);
@@ -168,10 +179,6 @@ window.onload = function () {
             drawToolBox();
             c.drawImage(selectedTool, tilePositionX, tilePositionY, selectedTool.width, selectedTool.height);
         }
-		/*console.clear(); 
-        for(var i = 0; i < 10; i++) {
-            console.log(tileTypeArray[i])
-        }*/
     }
 
     function drawGrid() {
@@ -208,10 +215,10 @@ window.onload = function () {
         c.drawImage(this.mirror45, 0, grid.height * tile.height, this.mirror45.width, this.mirror45.height);
         //Draw the boulder in the tool box
         //c.drawImage(this.boulder, this.boulder.width, grid.height * tile.height, this.boulder.width, this.boulder.height);
-        //Draw filters in the toolbox
-        c.drawImage(this.redFilter, this.redFilter.width, grid.height * tile.height, this.redFilter.width, this.redFilter.height);
-        c.drawImage(this.greenFilter, this.greenFilter.width*2, grid.height * tile.height, this.greenFilter.width, this.greenFilter.height);
-        c.drawImage(this.blueFilter, this.blueFilter.width*3, grid.height * tile.height, this.blueFilter.width, this.blueFilter.height);
+        
+        //Draw filter in the toolbox
+        c.drawImage(this.toolboxFilter, toolboxFilter.width, grid.height * tile.height, toolboxFilter.width, toolboxFilter.height);
+        
         //Draw delete symbol
         c.drawImage(this.deleteTiles, this.deleteTiles.width*9, grid.height * tile.height, this.deleteTiles.width, this.deleteTiles.height);
         
