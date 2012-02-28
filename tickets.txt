@@ -1,0 +1,42 @@
+Multi-player
+    2 players, same grid
+        Express.js?
+    Facebook
+        Auth
+        Post to walls
+        invite friends
+        Play in facebook
+Scoring
+    Simple point values
+    Timing?
+Server Side
+    TurboGears -> DB
+Client Side
+    Local Store HTML5
+Persistance
+    Save game state
+    Save highscores
+Administrative
+    Finish Bio pages
+    Finish STEM Submission Form
+    Follow-up Blog Post for Cooney/OSDC
+Overlay
+    Simple Instructions
+    Simple "Level Complete, click for next level" message
+    "Friend X is online"
+Lobby Screen
+Educational Feedback
+Art
+    Mad Scientist's Lab
+        New Tiles
+            Test Tubes
+            Bunsen Burners
+            Jacob's Ladder
+        New Background
+            Laboratory
+    Spaaace!
+        New Tiles
+            Satellites
+        New Background
+            Lunar Surfaces
+            Stars
