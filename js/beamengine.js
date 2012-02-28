@@ -201,10 +201,9 @@ BeamEngine.prototype.drawBeam = function(cVas, startPos, endPos, tileCenters) {
         0.5: mirror_270,
         0.6: mirror_315,
         0.7: mirror_360,
-        1: green_filter,
-		2: red_filter,
-		3: green_filter,
-		4: blue_filter,
+		1: red_filter,
+		2: green_filter,
+        3: blue_filter,
     }
 
 	// OKAY: tileCenters is the array that holds all the center points for the tiles.

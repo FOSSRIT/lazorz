@@ -28,9 +28,11 @@ window.onload = function () {
 
     var canvas = document.getElementById('myCanvas');
 	var lineCanvas = document.getElementById('lineCanvas');
+	var tileCanvas = document.getElementById('tileCanvas');
 	var engine = document.getElementById('engine');
 	var c = canvas.getContext('2d');
 	var lc = lineCanvas.getContext('2d');
+	var tc = tileCanvas.getContext('2d');
 	
 	//Create a BeamEngine object
 	var beamEngine = new BeamEngine(engine,tileTypeArray);
@@ -68,8 +70,14 @@ window.onload = function () {
 
     this.selectedTool = new Image();
     this.selectedTool.src = "image/select.png";
-    this.boulder = new Image();
-    this.boulder.src = "image/boulder.png";
+    //this.boulder = new Image();
+    //this.boulder.src = "image/boulder.png";
+    this.redFilter = new Image();
+    this.redFilter.src = "image/red_filter.png";
+    this.greenFilter = new Image();
+    this.greenFilter.src = "image/green_filter.png";
+    this.blueFilter = new Image();
+    this.blueFilter.src = "image/blue_filter.png";
 
     this.start = new Image();
     this.start.src = "image/start.png";
@@ -83,7 +91,7 @@ window.onload = function () {
     tileType = null;
 
     setupTileArrays();
-    lineCanvas.addEventListener('click', handleClick, false);
+    tileCanvas.addEventListener('click', handleClick, false);
     drawGrid();
 
     function handleClick(e) {
@@ -105,17 +113,17 @@ window.onload = function () {
             if(tileType != null && tileTypeArray[row][column] != 'start' && tileTypeArray[row][column] != 'end') {
                 switch(Math.floor(tileType)) {
                     case 0:
-                        c.clearRect(tilePositionX, tilePositionY, tile.width, tile.height);
+                        tc.clearRect(tilePositionX, tilePositionY, tile.width, tile.height);
 
                         if(curIndex == 7 || tileTypeArray[row][column] == -1) {
                             curIndex = 0;
-                            c.drawImage(mirrorList[curIndex], tilePositionX, tilePositionY, mirrorList[curIndex].width, mirrorList[curIndex].height);
+                            tc.drawImage(mirrorList[curIndex], tilePositionX, tilePositionY, mirrorList[curIndex].width, mirrorList[curIndex].height);
                             tileTypeArray[row][column] = tileType + .0;
                             tileIndex[row][column] = curIndex;
                         }
                         else {
                             curIndex = tileIndex[row][column]+1;
-                            c.drawImage(mirrorList[curIndex], tilePositionX, tilePositionY, mirrorList[curIndex].width, mirrorList[curIndex].height);
+                            tc.drawImage(mirrorList[curIndex], tilePositionX, tilePositionY, mirrorList[curIndex].width, mirrorList[curIndex].height);
                             tileTypeArray[row][column] = tileType + curIndex/10;
                             tileIndex[row][column] = curIndex;
                         }
@@ -123,8 +131,20 @@ window.onload = function () {
                         c.strokeRect(tilePositionX, tilePositionY, tile.width, tile.height);
                         break;
                     case 1:
-                         c.clearRect(tilePositionX, tilePositionY, tile.width, tile.height);
-                         c.drawImage(boulder, tilePositionX, tilePositionY, boulder.width, boulder.height);
+                         tc.clearRect(tilePositionX, tilePositionY, tile.width, tile.height);
+                         tc.drawImage(redFilter, tilePositionX, tilePositionY, redFilter.width, redFilter.height);
+                         c.strokeRect(tilePositionX, tilePositionY, tile.width, tile.height);
+						 tileTypeArray[row][column] = tileType;
+                         break;
+                    case 2:
+                         tc.clearRect(tilePositionX, tilePositionY, tile.width, tile.height);
+                         tc.drawImage(greenFilter, tilePositionX, tilePositionY, greenFilter.width, greenFilter.height);
+                         c.strokeRect(tilePositionX, tilePositionY, tile.width, tile.height);
+						 tileTypeArray[row][column] = tileType;
+                         break;
+                    case 3:
+                         tc.clearRect(tilePositionX, tilePositionY, tile.width, tile.height);
+                         tc.drawImage(blueFilter, tilePositionX, tilePositionY, blueFilter.width, blueFilter.height);
                          c.strokeRect(tilePositionX, tilePositionY, tile.width, tile.height);
 						 tileTypeArray[row][column] = tileType;
                          break;
@@ -180,10 +200,13 @@ window.onload = function () {
         //Draw the Mirror Tile in the tool box
         c.drawImage(this.mirror45, 0, grid.height * tile.height, this.mirror45.width, this.mirror45.height);
         //Draw the boulder in the tool box
-        c.drawImage(this.boulder, this.boulder.width, grid.height * tile.height, this.boulder.width, this.boulder.height);
+        //c.drawImage(this.boulder, this.boulder.width, grid.height * tile.height, this.boulder.width, this.boulder.height);
+        c.drawImage(this.redFilter, this.redFilter.width, grid.height * tile.height, this.redFilter.width, this.redFilter.height);
+        c.drawImage(this.greenFilter, this.greenFilter.width*2, grid.height * tile.height, this.greenFilter.width, this.greenFilter.height);
+        c.drawImage(this.blueFilter, this.blueFilter.width*3, grid.height * tile.height, this.blueFilter.width, this.blueFilter.height);
 
         //c.fillStyle = '#FFFFFF';
-		c.drawImage(start, tile.height*startPos.x, tile.height*startPos.y, this.start.width, this.start.height);
+		tc.drawImage(start, tile.height*startPos.x, tile.height*startPos.y, this.start.width, this.start.height);
         this.tileTypeArray[startPos.x][startPos.y] = 'start';
         c.drawImage(end, tile.width*endPos.x, tile.height*endPos.y, this.end.width, this.end.height);
         this.tileTypeArray[endPos.x][endPos.y] = 'end';
