@@ -26,3 +26,17 @@ Overlay
     "Friend X is online"
 Lobby Screen
 Educational Feedback
+Art
+    Mad Scientist's Lab
+        New Tiles
+            Test Tubes
+            Bunsen Burners
+            Jacob's Ladder
+        New Background
+            Laboratory
+    Spaaace!
+        New Tiles
+            Satellites
+        New Background
+            Lunar Surfaces
+            Stars
