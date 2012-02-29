@@ -2,13 +2,13 @@ this.grid;
 this.mapIndex = 0;
 this.levelComplete = false;
 
-if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl1.html")
+if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazorz-lvl1.html")
     this.dir = 0;//Math.floor((Math.random() * 4));
-if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl2.html")
+if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazorz-lvl2.html")
     this.dir = 2;
-if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl3.html")
+if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazorz-lvl3.html")
     this.dir = 0;
-if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl4.html")
+if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazorz-lvl4.html")
     this.dir = 3;
 
 this.hor_v = 0;
@@ -82,7 +82,7 @@ function nothing(col, row, hor_v, ver_v) {
 function level_complete(cVas, endPos, tileCenters) {
 	//console.log("LEVEL COMPLETE")
     
-    if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl4.html") {
+    if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazorz-lvl4.html") {
         if(cVas.strokeStyle == "#00ae00")
             var r = confirm("LEVEL COMPLETE!");
     }
@@ -98,14 +98,14 @@ function level_complete(cVas, endPos, tileCenters) {
     }
     
     if(r == true) {
-        if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl1.html")
-            window.location = "http://lazorz-fossrit.rhcloud.com/Lazor-lvl2.html";
-        else if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl2.html")
-            window.location = "http://lazorz-fossrit.rhcloud.com/Lazor-lvl3.html";
-        else if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl3.html")
-            window.location = "http://lazorz-fossrit.rhcloud.com/Lazor-lvl4.html";
-        else if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl4.html")
-            window.location = "http://lazorz-fossrit.rhcloud.com/Lazor-lvl1.html";
+        if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazorz-lvl1.html")
+            window.location = "http://lazorz-fossrit.rhcloud.com/Lazorz-lvl2.html";
+        else if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazorz-lvl2.html")
+            window.location = "http://lazorz-fossrit.rhcloud.com/Lazorz-lvl3.html";
+        else if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazorz-lvl3.html")
+            window.location = "http://lazorz-fossrit.rhcloud.com/Lazorz-lvl4.html";
+        else if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazorz-lvl4.html")
+            window.location = "http://lazorz-fossrit.rhcloud.com/Lazorz-lvl1.html";
     }
 }
 
