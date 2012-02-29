@@ -1,6 +1,14 @@
 this.grid;
+this.mapIndex = 0;
 this.levelComplete = false;
-this.dir = 1;//Math.floor((Math.random() * 4));
+
+if(window.location == "file:///Users/vincardinale/lazorz/MajorLazor.html")
+    this.dir = 0;//Math.floor((Math.random() * 4));
+if(window.location == "file:///Users/vincardinale/lazorz/Lazor-lvl2.html")
+    this.dir = 2;
+if(window.location == "file:///Users/vincardinale/lazorz/Lazor-lvl3.html")
+    this.dir = 0;
+
 this.hor_v = 0;
 this.ver_v = 0;
 
@@ -15,6 +23,21 @@ BeamEngine.prototype.update = function(tileTypeArr)
 {
 	//console.log("update");
 	grid = tileTypeArr;
+}
+
+BeamEngine.prototype.getMapIndex = function()
+{
+    return mapIndex;
+}
+
+BeamEngine.prototype.getLevelComplete = function()
+{
+    return levelComplete;
+}
+
+BeamEngine.prototype.setLevelComplete = function(lvlComp)
+{
+    levelComplete = lvlComp;
 }
 
 function startingPiece(col, row, hor_v, ver_v) {
@@ -55,14 +78,24 @@ function nothing(col, row, hor_v, ver_v) {
 }
 
 function level_complete(cVas, endPos, tileCenters) {
-	levelComplete = true;
-	console.log("LEVEL COMPLETE")
+	//console.log("LEVEL COMPLETE")
 	cVas.fillStyle = cVas.strokeStyle;
 	cVas.beginPath();
 	cVas.arc(tileCenters[endPos.x][endPos.y].x, tileCenters[endPos.x][endPos.y].y, 12, 0, Math.PI*2, true);
 	cVas.closePath();
 	cVas.fill();
 	cVas.fillStyle = "#000000";
+    
+    var r = confirm("LEVEL COMPLETE!");
+    
+    if(r == true) {
+        if(window.location == "file:///Users/vincardinale/lazorz/MajorLazor.html")
+            window.location = "file:///Users/vincardinale/lazorz/Lazor-lvl2.html";
+        else if(window.location == "file:///Users/vincardinale/lazorz/Lazor-lvl2.html")
+            window.location = "file:///Users/vincardinale/lazorz/Lazor-lvl3.html";
+        else if(window.location == "file:///Users/vincardinale/lazorz/Lazor-lvl3.html")
+            window.location = "file:///Users/vincardinale/lazorz/MajorLazor.html";
+    }
 }
 
 function mirror_45(col, row, hor_v, ver_v) {
@@ -192,6 +225,7 @@ BeamEngine.prototype.drawBeam = function(cVas, startPos, endPos, tileCenters) {
     var lookup = {
 		100: startingPiece,
 		101: level_complete,
+        105: block,
         999: nothing,
         0: mirror_45,
         0.1: mirror_90,
@@ -213,7 +247,6 @@ BeamEngine.prototype.drawBeam = function(cVas, startPos, endPos, tileCenters) {
 	cVas.lineWidth = 4;
 	cVas.strokeStyle = "#FF0000";
 	cVas.moveTo(tileCenters[startPos.x][startPos.y].x, tileCenters[startPos.x][startPos.y].y);
-	this.levelComplete = false;
 	
 	for(var i = 0; i < 110; i++) {		
 		if(grid[row][col] != 101) {
@@ -233,6 +266,7 @@ BeamEngine.prototype.drawBeam = function(cVas, startPos, endPos, tileCenters) {
 		}
 	}
 	
+	this.levelComplete = false;
 	cVas.closePath();
 }
 // run it

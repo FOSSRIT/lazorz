@@ -2,12 +2,57 @@
 // Real-Time Games with HTML5, CSS3 and Javascript (ISBN #978-1-4493-0475-1).
 // Copyright 2011 by Mario Andres Pagella.
 window.onload = function () {
+    this.map1 = [
+    [999,999,999,999,999,999,999,999,999,999],
+    [999,999,999,999,999,999,999,999,999,101],
+    [999,999,999,999,999,999,999,999,999,999],
+    [999,999,999,999,999,999,999,999,999,999],
+    [999,999,999,999,999,999,999,999,999,999],
+    [999,999,999,999,999,999,999,999,999,999],
+    [999,999,999,999,999,999,999,999,999,999],
+    [100,999,999,999,999,999,999,999,999,999],
+    [999,999,999,999,999,999,999,999,999,999],
+    [999,999,999,999,999,999,999,999,999,999]];
+
+    this.map2 = [
+    [999,999,999,999,999,999,999,999,999,999],
+    [101,999,999,999,999,999,999,999,999,999],
+    [999,999,999,999,999,999,999,999,999,999],
+    [999,999,999,999,999,999,999,999,999,999],
+    [999,999,999,999,999,999,999,999,999,999],
+    [999,999,999,999,999,999,999,999,999,999],
+    [999,999,999,999,999,999,999,999,999,999],
+    [999,999,999,999,999,999,999,999,999,999],
+    [999,999,999,999,999,999,999,999,999,100],
+    [999,999,999,999,999,999,999,999,999,999]];
+
+    this.map3 = [
+    [999,999,999,999,999,999,999,999,999,999],
+    [999,999,999,999,999,999,999,999,999,999],
+    [999,999,999,105,105,105,999,999,999,999],
+    [999,999,999,999,999,999,999,999,999,999],
+    [999,999,999,999,999,999,999,999,999,999],
+    [999,105,999,999,999,999,105,999,999,999],
+    [999,999,999,100,999,999,105,999,999,999],
+    [999,999,999,999,105,105,999,999,999,999],
+    [999,999,999,999,999,999,999,999,999,999],
+    [999,101,105,999,999,999,999,999,999,999]];
+
     var tileMap = [];
-    this.tileTypeArray = new Array(10);
+    this.mapIndex = 0;
+    this.mapTiles = [this.map1, this.map2, this.map3];
+    
+    if(window.location == "file:///Users/vincardinale/lazorz/MajorLazor.html")
+        this.tileTypeArray = this.mapTiles[0];
+    if(window.location == "file:///Users/vincardinale/lazorz/Lazor-lvl2.html")
+        this.tileTypeArray = this.mapTiles[1];
+    if(window.location == "file:///Users/vincardinale/lazorz/Lazor-lvl3.html")
+        this.tileTypeArray = this.mapTiles[2];
+    
     this.tileIndex = new Array(10);
     this.tileCenterPos = new Array(10);
-
-    // 50px square tiles
+    
+    // 48px square tiles
     var tile = {
         width: 48,
         height: 48
@@ -40,6 +85,7 @@ window.onload = function () {
 
     //Create a BeamEngine object
     var beamEngine = new BeamEngine(engine,tileTypeArray);
+    //this.tileTypeArray = this.mapTiles[beamEngine.getMapIndex()];
 
     //Temp loading in image for toolbox placeholder
     //Mirrors
@@ -79,8 +125,8 @@ window.onload = function () {
 
     this.selectedTool = new Image();
     this.selectedTool.src = "image/select.png";
-    //this.boulder = new Image();
-    //this.boulder.src = "image/boulder.png";
+    this.boulder = new Image();
+    this.boulder.src = "image/boulder.png";
 
     this.toolboxFilter = new Image();
     this.toolboxFilter.src = "image/toolbox_filter.png";
@@ -106,8 +152,18 @@ window.onload = function () {
     this.end = new Image();
     this.end.src = "image/end_top.png";
 
-    var startPos = new Point(3, 5);
-    var endPos = new Point(9, 0);
+    for(var row = 0; row < 10; row++) {
+        for(var col = 0; col < 10; col++) {
+            if(this.tileTypeArray[row][col] == 100)
+                var startPos = new Point(row, col);
+
+            if(this.tileTypeArray[row][col] == 101)
+                var endPos = new Point(row, col);
+        }
+    }
+
+	//var startPos = new Point(3, 5);
+	//var endPos = new Point(9, 0);
 
     //For determining which tile was selected from the toolbox
     tileType = null;
@@ -117,6 +173,18 @@ window.onload = function () {
     BackgroundBits
     drawBackground();
     drawGrid();
+    
+    if(beamEngine.getLevelComplete() == true) {
+            if(this.mapIndex == 2)
+                this.mapIndex = 0;
+            else
+                this.mapIndex += 1;
+                
+            this.tileTypeArray = this.mapTiles[this.mapIndex];
+            beamEngine.update(tileTypeArray);
+            lineCanvas.width = lineCanvas.width;
+            beamEngine.drawBeam(lc, startPos, endPos, tileCenterPos);
+    }
 
     function handleClick(e) {
         //When a click is detected, translate the mouse coordinates to pixel coordinates
@@ -134,7 +202,7 @@ window.onload = function () {
             }
             tileMap[row][column] = 0;
 
-            if(tileType != null && tileTypeArray[row][column] != 'start' && tileTypeArray[row][column] != 'end') {
+            if(tileType != null && tileTypeArray[row][column] != 100 && tileTypeArray[row][column] != 101 && tileTypeArray[row][column] != 105) {
                 switch(Math.floor(tileType)) {
                     case 0:
                         tc.clearRect(tilePositionX, tilePositionY, tile.width, tile.height);
@@ -170,7 +238,6 @@ window.onload = function () {
                             tileIndex[row][column] = filIndex;
                          }
 
-                         console.log(tileTypeArray[row][column])
                          c.strokeRect(tilePositionX, tilePositionY, tile.width, tile.height);
                          break;
                     case 9:
@@ -225,7 +292,7 @@ window.onload = function () {
         setTimeout(drawToolBox, 1);
     }
 
-    function drawToolBox() {    
+    function drawToolBox() {
         c.fillStyle = "rgba(00, 55, 99, 0.2)";
         c.fillRect (0, grid.height * tile.height, grid.width * tile.width, tile.height);
         c.strokeRect(0, grid.height * tile.height, grid.width * tile.width, tile.height);
@@ -241,13 +308,29 @@ window.onload = function () {
         //Draw delete symbol
         c.drawImage(this.deleteTiles, this.deleteTiles.width*9, grid.height * tile.height, this.deleteTiles.width, this.deleteTiles.height);
 
+        for (var row = 0; row < 10; row++) {
+            for (var col = 0; col < 10; col++) {
+                var tilePositionX = tile.width * row;
+                var tilePositionY = tile.height * col;
 
+                if(this.tileTypeArray[row][col] == 100)
+                    tc.drawImage(start, tilePositionX, tilePositionY, this.start.width, this.start.height);
+                if(this.tileTypeArray[row][col] == 101)
+                    c.drawImage(end, tilePositionX, tilePositionY, this.end.width, this.end.height);
+                if(this.tileTypeArray[row][col] == 105)
+                    tc.drawImage(boulder, tilePositionX, tilePositionY, this.boulder.width, this.boulder.height);
+            }
+        }
+        //
         //c.fillStyle = '#FFFFFF';
-        tc.drawImage(start, tile.height*startPos.x, tile.height*startPos.y, this.start.width, this.start.height);
+        //tc.drawImage(start, tile.height*startPos.x, tile.height*startPos.y, this.start.width, this.start.height);
+
         this.tileTypeArray[startPos.x][startPos.y] = 100;
-        c.drawImage(end, tile.width*endPos.x, tile.height*endPos.y, this.end.width, this.end.height);
+        //c.drawImage(end, tile.width*endPos.x, tile.height*endPos.y, this.end.width, this.end.height);
         this.tileTypeArray[endPos.x][endPos.y] = 101;
 
+        beamEngine.update(tileTypeArray);
+        lineCanvas.width = lineCanvas.width;
         beamEngine.drawBeam(lc, startPos, endPos, tileCenterPos);
     }
 
@@ -258,8 +341,8 @@ window.onload = function () {
                 var tilePosX = tile.width * row;
                 var tilePosY = tile.height * col;
 
-                if(this.tileTypeArray[row] == null)
-                    this.tileTypeArray[row] = new Array(10);
+                //if(this.tileTypeArray[row] == null)
+                    //this.tileTypeArray[row] = new Array(10);
 
                 if(this.tileIndex[row] == null)
                     this.tileIndex[row] = new Array(10);
@@ -267,7 +350,7 @@ window.onload = function () {
                 if(this.tileCenterPos[row] == null)
                     this.tileCenterPos[row] = new Array(10);
 
-                this.tileTypeArray[row][col] = 999;
+                //this.tileTypeArray[row][col] = 999;
                 this.tileIndex[row][col] = -1;
                 this.tileCenterPos[row][col] = new Point(tilePosX + (tile.width/2), tilePosY + (tile.height/2));
             }
