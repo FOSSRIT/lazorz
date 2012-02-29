@@ -210,8 +210,9 @@ window.onload = function () {
     }
 
     function handleClick(e) {
-        //When a click is detected, translate the mouse coordinates to pixel coordinates
-        var row = Math.floor((e.clientX) / tile.width);
+		//When a click is detected, translate the mouse coordinates to pixel coordinates
+		var offsetWidth = Math.floor(document.body.clientWidth - (document.body.clientWidth * 0.7));
+        var row = Math.floor((e.clientX - offsetWidth) / tile.width);
         var column = Math.floor((e.clientY) / tile.height);
         var tilePositionX = tile.width * row;
         var tilePositionY = tile.height * column;
