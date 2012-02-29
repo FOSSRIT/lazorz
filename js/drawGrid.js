@@ -1,7 +1,16 @@
 // Portions of this code are from the book JavaScript: Making Isometric Social
 // Real-Time Games with HTML5, CSS3 and Javascript (ISBN #978-1-4493-0475-1).
 // Copyright 2011 by Mario Andres Pagella.
+
 window.onload = function () {
+    // Legend:
+    // 100 = Start Tile
+    // 101 = End Tile
+    // 999 = Blank Space
+    // 105 = Boulder
+    // 1 = Red Filter
+    // 1.1 = Green Filter
+    // 1.2 = Blue Filter
     this.map1 = [
     [999,999,999,999,999,999,999,999,999,999],
     [999,999,999,999,999,999,999,999,999,101],
@@ -42,9 +51,9 @@ window.onload = function () {
     [999,999,999,999,999,105,105,105,105,105],
     [999,999,999,999,105,999,999,105,105,999],
     [999,105,1.2,105,105,105,999,999,105,105],
-    [101,105,999,999,999,999,999,999,999,999],
-    [105,105,999,999,999,999,999,1.1,999,999],
-    [999,999,999,999,999,999,105,105,105,999],
+    [101,105,999,105,105,999,999,999,999,999],
+    [105,105,999,105,105,999,999,1.1,999,999],
+    [999,999,999,105,999,999,105,105,105,999],
     [999,999,999,999,999,105,105,105,999,999],
     [999,999,999,999,105,105,999,999,999,999],
     [999,999,105,105,105,999,999,999,999,100],
@@ -201,8 +210,9 @@ window.onload = function () {
     }
 
     function handleClick(e) {
-        //When a click is detected, translate the mouse coordinates to pixel coordinates
-        var row = Math.floor((e.clientX) / tile.width);
+		//When a click is detected, translate the mouse coordinates to pixel coordinates
+		var offsetWidth = Math.floor(document.body.clientWidth - (document.body.clientWidth * 0.7));
+        var row = Math.floor((e.clientX - offsetWidth) / tile.width);
         var column = Math.floor((e.clientY) / tile.height);
         var tilePositionX = tile.width * row;
         var tilePositionY = tile.height * column;
