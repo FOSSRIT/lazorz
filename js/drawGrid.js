@@ -193,7 +193,7 @@ window.onload = function () {
         var tilePositionX = tile.width * row;
         var tilePositionY = tile.height * column;
 
-        c.strokeStyle = "#000000";
+        c.strokeStyle = "rgba(90, 90, 90, 0.5)";
         c.lineWidth = 1;
 
         if(column < 10 && row < 10) {
@@ -220,7 +220,6 @@ window.onload = function () {
                             tileIndex[row][column] = mirIndex;
                         }
 
-                        c.strokeRect(tilePositionX, tilePositionY, tile.width, tile.height);
                         break;
                     case 1:
                          tc.clearRect(tilePositionX, tilePositionY, tile.width, tile.height);
@@ -238,7 +237,6 @@ window.onload = function () {
                             tileIndex[row][column] = filIndex;
                          }
 
-                         c.strokeRect(tilePositionX, tilePositionY, tile.width, tile.height);
                          break;
                     case 9:
                         tc.clearRect(tilePositionX, tilePositionY, tile.width, tile.height);
@@ -265,7 +263,7 @@ window.onload = function () {
     }
 
     function drawGrid() {
-        c.fillStyle = '#FFFFFF';
+        c.strokeStyle = "rgba(90, 90, 90, 0.5)";
         //c.fillRect (0, 0, canvas.width, canvas.height);
 
         var startRow = 0;
