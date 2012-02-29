@@ -37,10 +37,22 @@ window.onload = function () {
     [999,999,999,999,105,105,999,999,999,999],
     [999,999,999,999,999,999,999,999,999,999],
     [999,101,105,999,999,999,999,999,999,999]];
+    
+    this.map4 = [
+    [999,999,999,999,999,105,105,105,105,105],
+    [999,999,999,999,105,999,999,105,105,999],
+    [999,105,1.2,105,105,105,999,999,105,105],
+    [101,105,999,999,999,999,999,999,999,999],
+    [105,105,999,999,999,999,999,1.1,999,999],
+    [999,999,999,999,999,999,105,105,105,999],
+    [999,999,999,999,999,105,105,105,999,999],
+    [999,999,999,999,105,105,999,999,999,999],
+    [999,999,105,105,105,999,999,999,999,100],
+    [999,999,105,999,999,999,999,999,999,105]];
 
     var tileMap = [];
     this.mapIndex = 0;
-    this.mapTiles = [this.map1, this.map2, this.map3];
+    this.mapTiles = [this.map1, this.map2, this.map3, this.map4];
     
     if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl1.html")
         this.tileTypeArray = this.mapTiles[0];
@@ -48,6 +60,8 @@ window.onload = function () {
         this.tileTypeArray = this.mapTiles[1];
     if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl3.html")
         this.tileTypeArray = this.mapTiles[2];
+    if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl4.html")
+        this.tileTypeArray = this.mapTiles[3];
     
     this.tileIndex = new Array(10);
     this.tileCenterPos = new Array(10);
@@ -314,9 +328,25 @@ window.onload = function () {
                 if(this.tileTypeArray[row][col] == 100)
                     tc.drawImage(start, tilePositionX, tilePositionY, this.start.width, this.start.height);
                 if(this.tileTypeArray[row][col] == 101)
+                {
                     c.drawImage(end, tilePositionX, tilePositionY, this.end.width, this.end.height);
+                    
+                    if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl4.html") {
+                        tc.fillStyle = "rgba(00, 174, 00, 1)";
+                        tc.beginPath();
+                        tc.arc(tileCenterPos[row][col].x, tileCenterPos[row][col].y, 12, 0, Math.PI*2, true);
+                        tc.closePath();
+                        tc.fill();
+                    }
+                }
                 if(this.tileTypeArray[row][col] == 105)
                     tc.drawImage(boulder, tilePositionX, tilePositionY, this.boulder.width, this.boulder.height);
+                if(this.tileTypeArray[row][col] == 1)
+                    tc.drawImage(redFilter, tilePositionX, tilePositionY, this.redFilter.width, this.redFilter.height);
+                if(this.tileTypeArray[row][col] == 1.1)
+                    tc.drawImage(greenFilter, tilePositionX, tilePositionY, this.greenFilter.width, this.greenFilter.height);
+                if(this.tileTypeArray[row][col] == 1.2)
+                    tc.drawImage(blueFilter, tilePositionX, tilePositionY, this.blueFilter.width, this.blueFilter.height);
             }
         }
         //

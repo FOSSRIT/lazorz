@@ -8,6 +8,8 @@ if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl2.html")
     this.dir = 2;
 if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl3.html")
     this.dir = 0;
+if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl4.html")
+    this.dir = 3;
 
 this.hor_v = 0;
 this.ver_v = 0;
@@ -79,14 +81,21 @@ function nothing(col, row, hor_v, ver_v) {
 
 function level_complete(cVas, endPos, tileCenters) {
 	//console.log("LEVEL COMPLETE")
-	cVas.fillStyle = cVas.strokeStyle;
-	cVas.beginPath();
-	cVas.arc(tileCenters[endPos.x][endPos.y].x, tileCenters[endPos.x][endPos.y].y, 12, 0, Math.PI*2, true);
-	cVas.closePath();
-	cVas.fill();
-	cVas.fillStyle = "#000000";
     
-    var r = confirm("LEVEL COMPLETE!");
+    if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl4.html") {
+        if(cVas.strokeStyle == "#00ae00")
+            var r = confirm("LEVEL COMPLETE!");
+    }
+    else {
+        cVas.fillStyle = cVas.strokeStyle;
+        cVas.beginPath();
+        cVas.arc(tileCenters[endPos.x][endPos.y].x, tileCenters[endPos.x][endPos.y].y, 12, 0, Math.PI*2, true);
+        cVas.closePath();
+        cVas.fill();
+        cVas.fillStyle = "#000000";
+        
+        var r = confirm("LEVEL COMPLETE!");
+    }
     
     if(r == true) {
         if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl1.html")
@@ -94,6 +103,8 @@ function level_complete(cVas, endPos, tileCenters) {
         else if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl2.html")
             window.location = "http://lazorz-fossrit.rhcloud.com/Lazor-lvl3.html";
         else if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl3.html")
+            window.location = "http://lazorz-fossrit.rhcloud.com/Lazor-lvl4.html";
+        else if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl4.html")
             window.location = "http://lazorz-fossrit.rhcloud.com/Lazor-lvl1.html";
     }
 }
