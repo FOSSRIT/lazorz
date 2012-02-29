@@ -89,7 +89,7 @@ function level_complete(cVas, endPos, tileCenters) {
     var r = confirm("LEVEL COMPLETE!");
     
     if(r == true) {
-        if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl1")
+        if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl1.html")
             window.location = "http://lazorz-fossrit.rhcloud.com/Lazor-lvl2.html";
         else if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl2.html")
             window.location = "http://lazorz-fossrit.rhcloud.com/Lazor-lvl3.html";
