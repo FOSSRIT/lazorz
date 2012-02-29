@@ -1,0 +1,23 @@
+time gource -i 0 -a 1 --background-image biglogo.jpeg --font-colour 663300 -b FFFFFF -s 10 --highlight-dirs --hide filenames,users,progress -e .00000000002 --key -s 1.2 --file-extensions --padding 1 --font-size 33 --stop-at-end -1280x720 --camera-mode overview --bloom-intensity .45 --output-ppm-stream - | ffmpeg -y -b 3000K -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -vpre slow -threads 0 rise.mp4
+
+time gource -i 0 -a 1 --background-image image/gource.png --font-colour FFFF -b 000000 -s 10 --highlight-dirs --hide filenames,users,progress -e .00000000002 --key -s 1.2 --file-extensions --padding 1 --font-size 33 --stop-at-end -1280x720 --camera-mode overview --bloom-intensity .45 --output-ppm-stream - | ffmpeg -y -b 3000K -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -vpre slow -threads 0 rise.mp4
+
+time gource -i 0 -a 1 --background-image image/gource.png --font-colour FFFF -b 000000 -s 10 --highlight-dirs --hide filenames,users,progress -e .00000000002 --key -s 1.2 --file-extensions --padding 1 --font-size 33 --stop-at-end -1280x720 --camera-mode overview --bloom-intensity .45
+
+time gource -i 0 -a 1 --background-image image/gource.png --font-colour 663300 -s 10 --highlight-dirs -e .00000000002 --key -s 1.2 --file-extensions --padding 1 --font-size 33 --stop-at-end -1280x720 --camera-mode overview --bloom-intensity .45 --output-ppm-stream - | ffmpeg -y -b 3000K -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -vpre slow -threads 0 rise.mp4
+
+
+time gource -i 0 -a 1 --background-image image/gource.png --font-colour 663300 -s 10 --highlight-dirs -e .00000000002 --key -s 1.2 --file-extensions --padding 1 --font-size 33 --stop-at-end -1280x720 --camera-mode overview --bloom-intensity .45
+
+time gource -i 0 -a 1 --background-image image/gource.png --font-colour FFFFFF -s 10 --key --padding 1 --font-size 33 --stop-at-end -1280x720 --camera-mode overview --bloom-intensity .45
+
+
+time gource -i 60000000 -a 1 --background-image image/gource.png --font-colour FFFFFF -b 000000 -s 10 --highlight-dirs --hide filenames,progress --key --file-extensions --padding 1 --font-size 33 --stop-at-end -1280x720 --camera-mode overview --bloom-intensity .45
+
+
+time gource -i 60000000 -a 1 --background-image image/gource.png --font-colour FFFFFF -b 000000 -s 10 --highlight-dirs --hide filenames,progress --key --file-extensions --padding 1 --font-size 33 --stop-at-end -1280x720 --camera-mode overview --bloom-intensity .45 --output-ppm-stream - | ffmpeg -y -b 3000K -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -vpre slow -threads 0 lazorz.mp4
+
+time gource -i 0 -a 1 --background-image image/gource.png --font-colour FFFFFF -b 000000 -s 10 --highlight-dirs --hide filenames,progress --key --file-extensions --padding 1 --font-size 33 --stop-at-end -1280x720 --camera-mode overview --bloom-intensity .45 --output-ppm-stream - | ffmpeg -y -b 3000K -r 60 -f image2pipe -vcodec ppm -i --vcodec libx264 -vpre -threads 0 lazorz.mp4
+
+FINAL ITERATION:
+time gource -i 0 -a 1 --background-image image/gource.png --font-colour FFFFFF -b 000000 -s 10 --highlight-dirs --hide filenames,progress --key --file-extensions --font-size 33 --stop-at-end -1280x720 --camera-mode overview --bloom-intensity .45 --output-ppm-stream - | ffmpeg -y -b 3000K -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 lazorz.mp4
