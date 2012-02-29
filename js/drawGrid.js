@@ -63,13 +63,13 @@ window.onload = function () {
     this.mapIndex = 0;
     this.mapTiles = [this.map1, this.map2, this.map3, this.map4];
     
-    if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl1.html")
+    if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazorz-lvl1.html")
         this.tileTypeArray = this.mapTiles[0];
-    if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl2.html")
+    if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazorz-lvl2.html")
         this.tileTypeArray = this.mapTiles[1];
-    if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl3.html")
+    if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazorz-lvl3.html")
         this.tileTypeArray = this.mapTiles[2];
-    if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl4.html")
+    if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazorz-lvl4.html")
         this.tileTypeArray = this.mapTiles[3];
     
     this.tileIndex = new Array(10);
@@ -341,7 +341,7 @@ window.onload = function () {
                 {
                     c.drawImage(end, tilePositionX, tilePositionY, this.end.width, this.end.height);
                     
-                    if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl4.html") {
+                    if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazorz-lvl4.html") {
                         tc.fillStyle = "rgba(00, 174, 00, 1)";
                         tc.beginPath();
                         tc.arc(tileCenterPos[row][col].x, tileCenterPos[row][col].y, 12, 0, Math.PI*2, true);
