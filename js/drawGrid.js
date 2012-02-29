@@ -170,7 +170,7 @@ window.onload = function () {
 
     setupTileArrays();
     tileCanvas.addEventListener('click', handleClick, false);
-    BackgroundBits
+    //BackgroundBits
     drawBackground();
     drawGrid();
     
