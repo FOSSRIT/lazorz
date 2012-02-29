@@ -42,11 +42,11 @@ window.onload = function () {
     this.mapIndex = 0;
     this.mapTiles = [this.map1, this.map2, this.map3];
     
-    if(window.location == "file:///Users/vincardinale/lazorz/MajorLazor.html")
+    if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl1.html")
         this.tileTypeArray = this.mapTiles[0];
-    if(window.location == "file:///Users/vincardinale/lazorz/Lazor-lvl2.html")
+    if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl2.html")
         this.tileTypeArray = this.mapTiles[1];
-    if(window.location == "file:///Users/vincardinale/lazorz/Lazor-lvl3.html")
+    if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl3.html")
         this.tileTypeArray = this.mapTiles[2];
     
     this.tileIndex = new Array(10);
