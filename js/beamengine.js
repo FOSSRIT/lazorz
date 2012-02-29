@@ -2,11 +2,11 @@ this.grid;
 this.mapIndex = 0;
 this.levelComplete = false;
 
-if(window.location == "file:///Users/vincardinale/lazorz/MajorLazor.html")
+if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl1.html")
     this.dir = 0;//Math.floor((Math.random() * 4));
-if(window.location == "file:///Users/vincardinale/lazorz/Lazor-lvl2.html")
+if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl2.html")
     this.dir = 2;
-if(window.location == "file:///Users/vincardinale/lazorz/Lazor-lvl3.html")
+if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl3.html")
     this.dir = 0;
 
 this.hor_v = 0;
@@ -89,12 +89,12 @@ function level_complete(cVas, endPos, tileCenters) {
     var r = confirm("LEVEL COMPLETE!");
     
     if(r == true) {
-        if(window.location == "file:///Users/vincardinale/lazorz/MajorLazor.html")
-            window.location = "file:///Users/vincardinale/lazorz/Lazor-lvl2.html";
-        else if(window.location == "file:///Users/vincardinale/lazorz/Lazor-lvl2.html")
-            window.location = "file:///Users/vincardinale/lazorz/Lazor-lvl3.html";
-        else if(window.location == "file:///Users/vincardinale/lazorz/Lazor-lvl3.html")
-            window.location = "file:///Users/vincardinale/lazorz/MajorLazor.html";
+        if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl1")
+            window.location = "http://lazorz-fossrit.rhcloud.com/Lazor-lvl2.html";
+        else if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl2.html")
+            window.location = "http://lazorz-fossrit.rhcloud.com/Lazor-lvl3.html";
+        else if(window.location == "http://lazorz-fossrit.rhcloud.com/Lazor-lvl3.html")
+            window.location = "http://lazorz-fossrit.rhcloud.com/Lazor-lvl1.html";
     }
 }
 
