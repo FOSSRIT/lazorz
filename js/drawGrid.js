@@ -225,9 +225,9 @@ window.onload = function () {
 
         //c.fillStyle = '#FFFFFF';
 		tc.drawImage(start, tile.height*startPos.x, tile.height*startPos.y, this.start.width, this.start.height);
-        this.tileTypeArray[startPos.x][startPos.y] = 'start';
+        this.tileTypeArray[startPos.x][startPos.y] = 100;
         c.drawImage(end, tile.width*endPos.x, tile.height*endPos.y, this.end.width, this.end.height);
-        this.tileTypeArray[endPos.x][endPos.y] = 'end';
+        this.tileTypeArray[endPos.x][endPos.y] = 101;
 		
 		beamEngine.drawBeam(lc, startPos, endPos, tileCenterPos);
     }
