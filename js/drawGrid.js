@@ -26,17 +26,21 @@ window.onload = function () {
         RIGHT: 39
     }
 
+    //BackgroundBits
+    var background = document.getElementById('backgroundCanvas');
     var canvas = document.getElementById('myCanvas');
-	var lineCanvas = document.getElementById('lineCanvas');
-	var tileCanvas = document.getElementById('tileCanvas');
-	var engine = document.getElementById('engine');
-	var c = canvas.getContext('2d');
-	var lc = lineCanvas.getContext('2d');
-	var tc = tileCanvas.getContext('2d');
-	
-	//Create a BeamEngine object
-	var beamEngine = new BeamEngine(engine,tileTypeArray);
-	
+    var lineCanvas = document.getElementById('lineCanvas');
+    var tileCanvas = document.getElementById('tileCanvas');
+    var engine = document.getElementById('engine');
+    //BackgroundBits
+    var b = background.getContext('2d');
+    var c = canvas.getContext('2d');
+    var lc = lineCanvas.getContext('2d');
+    var tc = tileCanvas.getContext('2d');
+
+    //Create a BeamEngine object
+    var beamEngine = new BeamEngine(engine,tileTypeArray);
+
     //Temp loading in image for toolbox placeholder
     //Mirrors
     this.mirror45 = new Image();
@@ -56,6 +60,11 @@ window.onload = function () {
     this.mirror360 = new Image();
     this.mirror360.src = "image/mirror360.png";
 
+    //BackgroundBits
+    //Temp Loading in background image
+    this.backgroundImage = new Image();
+    this.backgroundImage.src = "image/background_space.png";
+
     var mirrorList = [];
     mirrorList[0] = this.mirror45;
     mirrorList[1] = this.mirror90;
@@ -72,7 +81,7 @@ window.onload = function () {
     this.selectedTool.src = "image/select.png";
     //this.boulder = new Image();
     //this.boulder.src = "image/boulder.png";
-    
+
     this.toolboxFilter = new Image();
     this.toolboxFilter.src = "image/toolbox_filter.png";
     this.redFilter = new Image();
@@ -81,14 +90,14 @@ window.onload = function () {
     this.greenFilter.src = "image/green_filter.png";
     this.blueFilter = new Image();
     this.blueFilter.src = "image/blue_filter.png";
-    
+
     var filterList = [];
     filterList[0] = this.redFilter;
     filterList[1] = this.greenFilter;
     filterList[2] = this.blueFilter;
-    
+
     var filIndex = 0;
-    
+
     this.deleteTiles = new Image();
     this.deleteTiles.src = "image/delete.png";
 
@@ -96,15 +105,17 @@ window.onload = function () {
     this.start.src = "image/start.png";
     this.end = new Image();
     this.end.src = "image/end_top.png";
-	
-	var startPos = new Point(3, 5);
-	var endPos = new Point(9, 0);
+
+    var startPos = new Point(3, 5);
+    var endPos = new Point(9, 0);
 
     //For determining which tile was selected from the toolbox
     tileType = null;
 
     setupTileArrays();
     tileCanvas.addEventListener('click', handleClick, false);
+    BackgroundBits
+    drawBackground();
     drawGrid();
 
     function handleClick(e) {
@@ -113,10 +124,10 @@ window.onload = function () {
         var column = Math.floor((e.clientY) / tile.height);
         var tilePositionX = tile.width * row;
         var tilePositionY = tile.height * column;
-		
-		c.strokeStyle = "#000000";
-		c.lineWidth = 1;
-			
+
+        c.strokeStyle = "#000000";
+        c.lineWidth = 1;
+
         if(column < 10 && row < 10) {
             if (tileMap[row] == null) {
                 tileMap[row] = [];
@@ -145,7 +156,7 @@ window.onload = function () {
                         break;
                     case 1:
                          tc.clearRect(tilePositionX, tilePositionY, tile.width, tile.height);
-                         
+
                          if(tileIndex[row][column] == filterList.length-1 || tileTypeArray[row][column] == 999) {
                             filIndex = 0;
                             tc.drawImage(filterList[filIndex], tilePositionX, tilePositionY, filterList[filIndex].width, filterList[filIndex].height);
@@ -158,7 +169,7 @@ window.onload = function () {
                             tileTypeArray[row][column] = tileType + filIndex/10;
                             tileIndex[row][column] = filIndex;
                          }
-                         
+
                          console.log(tileTypeArray[row][column])
                          c.strokeRect(tilePositionX, tilePositionY, tile.width, tile.height);
                          break;
@@ -167,10 +178,10 @@ window.onload = function () {
                         tileTypeArray[row][column] = 999;
                         break;
                 }
-				
-				beamEngine.update(tileTypeArray);
-				lineCanvas.width = lineCanvas.width;
-				beamEngine.drawBeam(lc, startPos, endPos, tileCenterPos);
+
+                beamEngine.update(tileTypeArray);
+                lineCanvas.width = lineCanvas.width;
+                beamEngine.drawBeam(lc, startPos, endPos, tileCenterPos);
             }
         }
         else if(column == 10 && row < 10) {
@@ -181,9 +192,14 @@ window.onload = function () {
         }
     }
 
+    //BackgroundBits
+    function drawBackground() {
+        b.drawImage(backgroundImage, 0, 0, backgroundImage.width, backgroundImage.height);
+    }
+
     function drawGrid() {
         c.fillStyle = '#FFFFFF';
-        c.fillRect (0, 0, canvas.width, canvas.height);
+        //c.fillRect (0, 0, canvas.width, canvas.height);
 
         var startRow = 0;
         var startCol = 0;
@@ -192,44 +208,47 @@ window.onload = function () {
 
         rowCount = ((startRow + rowCount) > grid.width) ? grid.width : rowCount;
         colCount = ((startCol + colCount) > grid.height) ? grid.height : colCount;
-		
+
         for (var row = startRow; row < rowCount; row++) {
             for (var col = startCol; col < colCount; col++) {
                 var tilePositionX = tile.width * row;
                 var tilePositionY = tile.height * col;
 
                 //Else just draw the strokes for each rectangle tile
+                //This is where you set the color of the grid line strokes
+                //For example:
+                //c.strokeStyle = '#FFFFFF';
                 c.strokeRect(tilePositionX, tilePositionY, tile.width, tile.height);
             }
         }
-		
-		setTimeout(drawToolBox, 1);
+
+        setTimeout(drawToolBox, 1);
     }
 
-    function drawToolBox() {	
+    function drawToolBox() {    
         c.fillStyle = "rgba(00, 55, 99, 0.2)";
         c.fillRect (0, grid.height * tile.height, grid.width * tile.width, tile.height);
         c.strokeRect(0, grid.height * tile.height, grid.width * tile.width, tile.height);
-		
+        //
         //Draw the Mirror Tile in the tool box
         c.drawImage(this.mirror45, 0, grid.height * tile.height, this.mirror45.width, this.mirror45.height);
         //Draw the boulder in the tool box
         //c.drawImage(this.boulder, this.boulder.width, grid.height * tile.height, this.boulder.width, this.boulder.height);
-        
+
         //Draw filter in the toolbox
         c.drawImage(this.toolboxFilter, toolboxFilter.width, grid.height * tile.height, toolboxFilter.width, toolboxFilter.height);
-        
+
         //Draw delete symbol
         c.drawImage(this.deleteTiles, this.deleteTiles.width*9, grid.height * tile.height, this.deleteTiles.width, this.deleteTiles.height);
-        
+
 
         //c.fillStyle = '#FFFFFF';
-		tc.drawImage(start, tile.height*startPos.x, tile.height*startPos.y, this.start.width, this.start.height);
+        tc.drawImage(start, tile.height*startPos.x, tile.height*startPos.y, this.start.width, this.start.height);
         this.tileTypeArray[startPos.x][startPos.y] = 100;
         c.drawImage(end, tile.width*endPos.x, tile.height*endPos.y, this.end.width, this.end.height);
         this.tileTypeArray[endPos.x][endPos.y] = 101;
-		
-		beamEngine.drawBeam(lc, startPos, endPos, tileCenterPos);
+
+        beamEngine.drawBeam(lc, startPos, endPos, tileCenterPos);
     }
 
     // Populates the 2d array with all falses because every space is empty at the start (for now)
