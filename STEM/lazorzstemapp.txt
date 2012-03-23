@@ -8,6 +8,13 @@
 
     At what stage of development is the Project?
 
+    Our project is at the playable prototype stage. Our basic game mechanics
+    and engines have been implemented, with basic art assets and sprites. The
+    project is ready for play testing, and our team will be seeking community
+    contributions such as levels, art, and feature improvements after the
+    conclusion of the STEM challenge. Our game has been deployed, and is
+    available at: http://lazorz-fossrit.rhcloud.com.
+
 Educational Value Proposition and Impact:
 
     What educational need(s) does your Project aim to address?
@@ -28,9 +35,49 @@ Contribution to the field of STEM Learning:
 Playability:
     How does the Project work?
 
+    Players are presented with a 10x10 grid, with a row of buttons. On the grid
+    there are tiles representing beams of light, and obstacles. The object of
+    the game is to place reflective mirrors on the grid to direct the beam
+    around obstacles to the end tile to solve the puzzle. Some puzzles require
+    the beam to be filtered through a certain color.
+
+    The user interface was designed with both desktop and mobile screens taken
+    into consideration. Both mouse and touch screen inputs were accounted for
+    when handling user input during game play.
+
+    Levels were designed to naturally progress in difficulty while introducing
+    players to new tools. The first level simply requires a mirror to be placed
+    in the correct position. The second level requires the player to rotate the
+    mirror. The third level introduces obstacles, and the fourth level
+    introduces colored filters. This gradual increase in difficulty works well
+    as a tutorial of the features and tools available in the current game,
+    serves as a proof of concept of game elements and mechanics.
+
 • Potential for Scale:
     Does your Project have potential for broad scale impact?
     What is the feasibility of mass production, marketing and distribution?
+
+    This game was designed to be simple, and meet the lowest common
+    denominators in usability and technical requirements.
+
+    If we were to produce physical copies of the game, our it would only need
+    .013% of the space on a 650MB Compact Disc. In fact, our game could fit
+    onto a 3.5inch Floppy Disk if it had to!
+
+    As our game playable via the web, distribution is a matter of directing
+    prospective users to a URL, where they can choose to play the game, or
+    download a local copy.
+
+    Scaling the game is as straight forward as adding more nodes to our
+    cloud-based deployment. Our back-end is deployed on Red Hat's Openshift
+    platform, which is backed by Amazon's Elastic Compute Cloud (EC2). If we
+    were to experience an increase in users and traffic, there are upgrade
+    paths provided by our Platform as a Service (Paas) provider to accommodate
+    increased traffic.
+
+
+    Production Feasibility
+        As a web-based game, production is as straight forward as deployment of static files.
 
     Please outline your thoughts around an implementation plan.
 
@@ -38,7 +85,29 @@ Playability:
     How can your Project be made available on a platform that is accessible to
     underserved communities, such as to being played via a dial-up internet
     connection with a standard web browser or mobile phones that have limited
-    connectivity and functionality
+    connectivity and functionality.
+
+    The code itself is "free standing." Meaning that if have a copy of the
+    files locally on your device, you can play the game locally without the
+    need of an internet connection. The current version of the game requires
+    less than 1MB of space. If someone were using a dial-up internet connection
+    (maximum speed of 56kbps), even at 25% speeds (12kbps), it would take just
+    over one minute (~66 seconds) to download all the files and game assets. To
+    play the game, you need only a standard web-browser (which again, does not
+    need access to the internet) so users won't have to download any additional
+    software or plug-ins onto their device.
+
+    Users who want to play the game from the internet on a desktop, need only a
+    web-browser. Our team developed grid and beam engines that use simple 2D
+    vector graphics that require minimal amounts of processing power and
+    bandwidth to render. If a device can render a web page, it has all the
+    power it needs to handle rendering our game.
+
+    Users who want to play the game from a touch-screen mobile device or tablet
+    experience the same interface and game play elements as on a desktop. The
+    resolution of the game grid and interface were designed with small screens
+    in mind.  Each tile is a mere 48x48 pixels; the favicon inside your
+    browser's address bar is usually between 12-36 pixels wide.
 
 • Next Steps:
     Sketch out your plan for what you will do next if you win the Grand Prize.
