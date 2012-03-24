@@ -1,10 +1,15 @@
+<html>
+<body>
 ■ Entry Title
     Lazorz
 
 ■ Executive Summary
 
 ■ Concept Overview:
-    What is your Project?
+    <strong>What is your Project?</strong>
+
+    Our project is an educational game built with open web technologies
+    (HTML5/Javascript) that focuses on the physics of light and reflection.
 
     At what stage of development is the Project?
 
@@ -69,15 +74,12 @@ Playability:
     download a local copy.
 
     Scaling the game is as straight forward as adding more nodes to our
-    cloud-based deployment. Our back-end is deployed on Red Hat's Openshift
-    platform, which is backed by Amazon's Elastic Compute Cloud (EC2). If we
-    were to experience an increase in users and traffic, there are upgrade
-    paths provided by our Platform as a Service (Paas) provider to accommodate
-    increased traffic.
+    cloud-based deployment. Our project is deployed on Red Hat's Openshift
+    platform (http://openshift.redhat.com), which is backed by Amazon's Elastic
+    Compute Cloud (EC2). If we were to experience an increase in users and
+    traffic, there are upgrade paths provided by our Platform as a Service
+    (Paas) provider to accommodate increased traffic.
 
-
-    Production Feasibility
-        As a web-based game, production is as straight forward as deployment of static files.
 
     Please outline your thoughts around an implementation plan.
 
@@ -125,3 +127,5 @@ words and must contain information about the Applicant's or Team member's
 relevant work experience and educational background, and should be submitted in
 the form of a portable document format (PDF) file. For Teams, all Team member
 biographies must be included in one PDF document.
+</body>
+</html>
