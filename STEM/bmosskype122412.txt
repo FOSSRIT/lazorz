@@ -1,0 +1,114 @@
+Mark Chec
+    Interactive Tech Director
+
+Renee
+    Champagne University, Egame degree
+    working at the museum
+
+Marc:
+    We're doing lots of interactive work, in the digital realm. We've
+    had a renewed focus on gamification on informal learning
+    experiences. Renee was approached by champagne about stem
+    challenge, get students working.  The students we worked with,
+    didn't turn out well. What we did last time was a body defense
+    game, and we started to get into a very complicated set of science
+    standards. Us working with content people was where we were lax.
+
+    We told Steve we were interested, but worried. Need the right
+    content people, need help selling the game to classic educators,
+    but we're bringing them up to speed.
+
+    Liked the discreet concepts of light reflection and refraction.
+    Fits well with national science standards. It's not complicated
+    like microbiology, and yet still appropriate. General explanation
+    is fantastic, splitting colors, reflecting, etc... to achieve
+    levels.  We are confident we can find the right content people on
+    our end to get that level of "science trueness" on our end.
+
+
+Remy:
+    What are your cycles like as upstream mentors?
+
+Marc:
+    When we look at overall timeline, we're looking at now until March
+    12th. We're looking at maybe 6 weeks, more like 5 weeks. On the
+    quarter system, you're used to it. I'd like to think, at least a
+    weekly check-in would be appropriate. Renee will be point person, I
+    will be kind of popping in and out, and if you have particular
+    concerns or questions, and if you need me to run interference, let
+    me know.
+
+    I'm guessing, we can say it's weekly, but at the beginning and end,
+    we'll need more meetings. Upfront to set expectations before actual
+    development. Personally, I like to see the 'paper and pencil'
+    storyboard, to get our content folks supportive of the educational
+    aspects. Once we're over initial hump, we go into development,
+    usability, iterative process. The last week or two, we'll want to
+    talk more for the last sprint.
+
+
+Marc:
+    The very next meeting after this is to chat with Renee about what
+    are these first deliverables for us to be comfortable to go forward
+    with development. Make sure we're sound on concept and usability.
+    I've been caught before with development happening too early.
+
+Remy:
+    SJ has been doing everything he can to make us paper-prototype and
+    not start developing too early. We're on the same page.
+
+
+there were some other questions from the email:
+
+Q:  How will this game/it's goals, support science standards?
+A:  Marc:
+        There is a very simple connections to Massachusetts standards,
+        and the national 1996 standards, that have science of light at
+        the middle school level. We'll take that on for curriculum
+        programs, exhibits/etc...
+
+Q:  How do we know this is working?
+A:  Marc:
+        We had an excellent research and evaluation team. We can do a
+        one-time session, or a formalized process. There are internal
+        employees, but they cost money. You can hire research and
+        evaluation teams, and they are respected world-wide. I'd have
+        to take a closer look at the STEM challenge requirements.
+
+Q:  Do you have any R&E at RIT?
+A:  Remy:
+        In the past for other foss game courses, We've done informal
+        play testing in elementary classrooms. We *may* have some
+        resources through 2nd avenue and first playable shops in town,
+        through SJ, but he's the one to answer this question.
+
+    Marc:
+        We can suggest that we have a myriad of resources. We can
+        propose informal classroom based testing, and formal testing.
+
+Q:  What research theories are driving development?
+    Marc:
+        We'll have some thoughts. The reality is, we're in a relatively
+        new age of game based education, esp in informal learning
+        space. There haven't been a lot of good studies with game based
+        learning. We can draw on the body of knowledge and research
+        that has been done. We're working with NSF grants to explore
+        the value of immersive virtual experiences. We'd be focusing
+        on games more than immersive in this case.
+
+        We can explain how this differs/intersects with other research.
+
+Marc:
+
+    We'll identify our resident "light expert", and we'll figure out
+    what are the challenges/opportunities that come from the classroom.
+    We'll find the sweet-spot.
+
+    We'll have some initial ideas/answers by Friday.
+
+Remy:
+    We'll talk with SJ, and meet with class on Thursday. Our team will
+    be putting together a draft version of the proposal to share with
+    the group, and send it along by Friday.
+
+Next Meeting: Friday
