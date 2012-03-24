@@ -16,6 +16,6 @@ Copyright 2011 by Mario Andres Pagella.
 How to Play
 ===========
 
-1) Open MajorLazor.html with your prefered web-browser
+1) Open welcome.html with your prefered web-browser
 2) Play Lazorz
 
