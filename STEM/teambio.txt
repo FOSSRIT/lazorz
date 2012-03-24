@@ -16,10 +16,10 @@ Vincent Cardinale
 
 Vin is a 5th year Game Design and Development Student of the Interactive Games
 and Media department at Rochester Insitute of Technology (http://rit.edu).
-During his co-ops with SPX Rochester, a Fortune 500 Company, Vin integrated his
+During his work-study with SPX Rochester, a Fortune 500 Company, Vin integrated his
 modified product configuration architecture into the existing eSales platform,
 while closing a sundry of bugs. During his coursework, Vin has contributed to a
-number of 2d and 3d games using XNA, Visual Studio, Flash, ActionScript, C#,
+number of 2D and 3D games using XNA, Visual Studio, Flash, ActionScript, C#,
 HTML5, and javascript.
 
 
@@ -29,12 +29,12 @@ Remy DeCausemaker
 Remy is a Graduate Student of the RIT Professional Studies Program,
 concentrating in Public Policy and Communications and Media Technology.
 
-As a Research Associate at the Rochester Institute of Technology Lab for
-Technological Literacy, Remy serves as Campaign Architect of FOSS@RIT. Inside
-and outside of the classroom he helps mentor and guide the students and faculty
-of RIT's Humanitarian Free/Opensource Software Development course. He also
-serves the board of CIVX.us, who's mission is to improve access, openness, and
-transparency of public information. With help from Sugarlabs,
-TeachingOpensource, The Software Freedom Law Center, The Fedora Project, and
-many others, Remy brings The Open Source Way to campuses, conferences, and
-campaigns everywhere he can.
+Inside and outside of the classroom he helps mentor and guide the students and
+faculty of RIT's Humanitarian Free/Opensource Software Development course. He
+also serves the board of CIVX.us, who's mission is to improve access, openness,
+and transparency of public information. With help from Sugarlabs,
+TeachingOpensource.org, The Software Freedom Law Center, The Fedora Project,
+and many others, Remy brings The Open Source Way to campuses, conferences, and
+campaigns everywhere he can. He prefers the Python programming language, and
+uses HTML5, Javascript, and jQuery for web development whenever he can. He even
+writes his notes and papers for his courses in HTML!
